@@ -1,0 +1,351 @@
+@import '../../abstracts/variables';
+@import '../../abstracts/mixins';
+@import '../../components/searchBar';
+#section_1 {
+    float: left;
+    height: 100vh;
+    margin-top: -10vh;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.view {
+    &--active,
+    &--disabled {
+        @include transition-type-2;
+        background-color: $color-primary-white;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+    &--active {
+        height: 100%;
+    }
+    &--disabled {
+        height: 0;
+    }
+    &__options {
+        &--1,
+        &--2,
+        &--3 {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            left: 2%;
+        }
+    }
+    &__options--1 &__option--active {
+        border: solid .1rem $color-primary-white;
+        .icon {
+            fill: $color-primary-white;
+        }
+        &:hover {
+            border: solid .1rem $color-edulink-primary;
+            .icon {
+                fill: $color-edulink-primary;
+            }
+        }
+    }
+    &__options--1 &__option--disabled {
+        border: solid .1rem $color-primary-white;
+        .icon {
+            fill: $color-primary-white;
+        }
+        &:hover {
+            border: solid .1rem $color-edulink-primary;
+            .icon {
+                fill: $color-edulink-primary;
+            }
+        }
+    }
+    &__options--2 &__option--active {
+        border: solid .1rem $color-edulink-primary;
+        background-color: $color-edulink-primary;
+        .icon {
+            fill: $color-primary-white;
+        }
+    }
+    &__options--2 &__option--disabled {
+        border: solid .1rem $color-edulink-primary;
+        .icon {
+            fill: $color-edulink-primary;
+        }
+        &:hover {
+            border: solid .1rem $color-edulink-primary;
+            background-color: $color-edulink-primary;
+            .icon {
+                fill: $color-primary-white;
+            }
+        }
+    }
+    &__options--3 &__option--active {
+        border: solid .1rem $color-edulink-primary;
+        background-color: $color-edulink-primary;
+        .icon {
+            fill: $color-primary-white;
+        }
+    }
+    &__options--3 &__option--disabled {
+        border: solid .1rem $color-edulink-primary;
+        .icon {
+            fill: $color-edulink-primary;
+        }
+        &:hover {
+            border: solid .1rem $color-edulink-primary;
+            background-color: $color-edulink-primary;
+            .icon {
+                fill: $color-primary-white;
+            }
+        }
+    }
+    &__option {
+        &--active,
+        &--disabled {
+            border: solid .1rem $color-primary-white;
+            width: 5rem;
+            height: 5rem;
+            clear: both;
+            .icon {
+                width: 5rem;
+                height: 5rem;
+                padding: 1.5rem;
+            }
+        }
+    }
+}
+
+.searchView {
+    width: 100%;
+    float: left;
+    height: 100%;
+    &__title {
+        color: $color-primary-white;
+        margin-bottom: 3rem;
+        clear: both;
+        text-shadow: $text-shadow-light;
+    }
+    &__search {
+        margin: 5vh 0 10% 50%;
+        height: 5rem;
+        float: left;
+        transform: translateX(-50%);
+        border-radius: .3rem;
+        box-shadow: $box-shadow-light;
+        width: 50%;
+        @include respond(desk-small) {
+            width: 70%;
+        }
+    }
+    &__foreground {
+        z-index: 20;
+        overflow: hidden;
+        position: absolute;
+        margin: 20vh 25% 0 25%;
+        width: 50%;
+        background-color: rgba(0, 0, 0, 0.18);
+        box-shadow: 0 0 23rem 5rem rgba(0, 0, 0, 0.25);
+        @include respond(tab-land) {
+            width: 70%;
+            margin: 20vh 15% 0 15%;
+        }
+        @include respond(phone) {
+            width: 90%;
+            margin: 20vh 5% 0 5%;
+        }
+    }
+}
+
+.lview {
+    height: 100%;
+    width: 100%;
+    padding: 15vh 10% 0 10%;
+    background-color: $color-grey-light;
+    position: relative;
+    &--2,
+    &--4 {
+        .lview {
+            &__content {
+                width: 50%;
+                margin-left: 50%;
+            }
+            &__buttons {
+                left: 50%;
+            }
+        }
+    }
+    &__content {
+        float: left;
+        width: 50%;
+        padding: 2rem;
+    }
+    &__title,
+    &__body {
+        float: left;
+        color: $color-primary-white;
+        margin-bottom: 3rem;
+        clear: both;
+        text-shadow: $text-shadow-light;
+    }
+    &__body {
+        line-height: 3rem;
+    }
+    &__buttons {
+        position: absolute;
+        z-index: 50;
+        bottom: 20vh;
+        float: left;
+    }
+    &__button {
+        margin-right: 2rem;
+        width: 15rem;
+        float: left;
+    }
+    &__arrow {
+        .icon {
+            width: 4rem;
+            height: 4rem;
+            fill: $color-primary-white;
+        }
+    }
+    @include respond(tab-land) {
+        padding: 15vh 10% 0 15%;
+        &__content {
+            width: 80%;
+            padding: 2rem;
+        }
+    }
+    @include respond(phone) {
+        &__content {
+            width: 90%;
+            padding: 2rem;
+        }
+        &--2,
+        &--4 {
+            .lview {
+                &__content {
+                    width: 90%;
+                    margin: 0;
+                }
+                &__buttons {
+                    left: 15%;
+                }
+            }
+        }
+    }
+}
+
+.infoView {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 90vh;
+    width: 100%;
+    margin-top: 10vh;
+    &__content {
+        float: left;
+    }
+    &__1 {
+        float: left;
+        width: 100%;
+        padding: 5rem 20%;
+        &__title {
+            width: 100%;
+            margin-bottom: 3rem;
+            color: $color-edulink-primary;
+        }
+        &__text {
+            width: 100%;
+            color: $color-grey-dark;
+        }
+    }
+    &__2 {
+        float: left;
+        width: 100%;
+        padding: 5rem 20%;
+    }
+    &__3 {
+        float: left;
+        width: 100%;
+        padding: 5rem 0;
+        background: radial-gradient(circle at center, $color-edulink-secondary, $color-edulink-primary);
+        &__title {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: $color-primary-white;
+        }
+        &__text {
+            width: 100%;
+            color: $color-primary-white;
+            line-height: 2rem;
+        }
+        &__buttons {
+            margin: 5rem 0 0 50%;
+            transform: translatex(-50%);
+            float: left;
+        }
+        &__button {
+            margin: 0 2rem;
+            width: 20rem;
+            float: left;
+        }
+    }
+}
+
+.infoBox {
+    width: 33.3%;
+    padding: 4rem;
+    float: left;
+    @include respond(tab-land) {
+        width: 50%;
+        padding: 4rem 2rem;
+    }
+    @include respond(phone) {
+        width: 100%;
+        padding: 4rem 0;
+    }
+    &__icon {
+        width: 8rem;
+        height: 8rem;
+        margin-left: 50%;
+        transform: translateX(-50%);
+        float: left;
+        .icon {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__title {
+        margin: 2rem 0 3rem 50%;
+        transform: translateX(-50%);
+        color: $color-primary-white;
+        float: left;
+        clear: both;
+        background: linear-gradient(90deg, $color-edulink-primary, $color-edulink-secondary);
+        padding: 1rem 3rem;
+    }
+    &__text {
+        width: 100%;
+        color: $color-grey-dark;
+        float: left;
+        margin: 2rem 0;
+    }
+    &__list {
+        float: left;
+        width: 100%;
+        color: $color-grey-dark;
+        li {
+            padding: .5rem 0;
+        }
+    }
+    &__price {
+        float: left;
+        color: $color-grey-dark;
+        width: 100%;
+        strong {
+            color: $color-success-primary;
+        }
+    }
+}

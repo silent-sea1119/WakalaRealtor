@@ -1,0 +1,32 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.menuType1 {
+    width: 100%;
+    height: 100%;
+    &--opposite &__link {
+        float: right;
+        border-left: solid .5rem $color-edulink-primary;
+        border-right: none;
+    }
+    &__section {
+        width: 100%;
+        margin: 0 auto 2rem auto;
+        height: auto;
+        float: left;
+    }
+    &__link {
+        width: 80%;
+        background-color: $color-grey-dark;
+        height: auto;
+        color: $color-primary-white;
+        padding: 1rem 0;
+        border-right: solid .5rem $color-edulink-primary;
+        cursor: pointer;
+        @include transition-type-1;
+        &:hover {
+            background-color: $color-edulink-primary;
+            width: 100%;
+        }
+    }
+}

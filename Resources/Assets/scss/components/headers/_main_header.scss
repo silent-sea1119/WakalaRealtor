@@ -1,0 +1,166 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+
+.popupMenu--active,
+.popupMenu--inActive {
+    @include transition-type-1;
+}
+
+.header {
+    height: 10vh;
+    width: 100%;
+    z-index: 50;
+    margin: 0 2% 0 0;
+    &__right {
+        height: 5vh;
+        float: right;
+        width: 50%;
+        position: relative;
+        &__menuBtn {
+            display: none;
+        }
+        &__text {
+            float: right;
+            margin-right: 3rem;
+            line-height: 10vh;
+        }
+        @include respond(tab-port) {
+            width: 58%;
+            margin: 0 2% 0 0;
+        }
+        @include respond(tab-land) {
+            width: 58%;
+            margin: 0 2% 0 0;
+        }
+        @include respond(phone) {
+            width: 48%;
+            margin: 0 2% 0 0;
+            &__menuBtn {
+                display: block;
+                width: 3vh;
+                height: 3vh;
+                margin: 3.5vh 0;
+                right: 2%;
+                float: right;
+            }
+            &__text {
+                margin-right: 2rem;
+            }
+        }
+    }
+    &__signup,
+    &__signin {
+        width: 10rem;
+        height: 100%;
+        float: right;
+        margin: 3vh 1% 2vh 1%;
+        @include respond(phone) {
+            display: none;
+        }
+    }
+    &__logo {
+        width: 8rem;
+        height: 4rem;
+        float: left;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        img {
+            height: 100%;
+            width: 100%;
+        }
+        @include respond(tab-land) {
+            height: 4rem;
+            width: 8rem;
+        }
+        @include respond(phone) {
+            height: 3rem;
+            width: 6rem;
+        }
+    }
+    &__title {
+        float: left;
+        color: $color-edulink-primary;
+        margin-left: 10rem;
+        line-height: 5vh;
+    }
+    &__left {
+        float: left;
+        height: 5vh;
+        position: absolute;
+        width: 20%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0 15% 0 10%;
+        @include respond(phone) {
+            width: 45%;
+            margin: 0 0 0 5%;
+        }
+    }
+    &--normal,
+    &--float {
+        width: 100%;
+        @include transition-type-2;
+    }
+    &--normal {
+        background-color: transparent;
+        position: relative;
+        .header {
+            &__right {
+                &__text {
+                    color: $color-edulink-primary;
+                }
+            }
+            &__title {
+                color: $color-edulink-primary;
+            }
+        }
+    }
+    &--float {
+        background-color: $color-primary-white;
+        box-shadow: $box-shadow-light;
+        margin-top: -.5rem;
+        position: fixed;
+        .header {
+            &__right {
+                &__text {
+                    color: $color-edulink-primary;
+                }
+            }
+            &__title {
+                color: $color-edulink-primary;
+            }
+        }
+    }
+}
+
+.popupMenu {
+    &--active,
+    &--disabled {
+        height: auto;
+        position: fixed;
+        z-index: 50;
+        border-radius: .3rem;
+        overflow: hidden;
+        margin-top: 2rem;
+        padding: 0;
+        right: 0;
+    }
+    &--active {
+        opacity: 1;
+        width: 20%;
+        @include respond(tab-port) {
+            width: 35%;
+        }
+        @include respond(tab-land) {
+            width: 45%;
+        }
+        @include respond(phone) {
+            width: 65%;
+        }
+    }
+    &--disabled {
+        opacity: 0;
+        width: 0;
+    }
+}

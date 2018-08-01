@@ -1,0 +1,136 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+@mixin text_type_1 {
+    text-align: left;
+    text-wrap: normal;
+}
+
+.f {
+    &_banner {
+        &_1 {
+            font-family: $font-primary;
+            font-size: 2.2rem;
+            @include text_type_1;
+        }
+    }
+    &_title {
+        font-family: $font-primary;
+        font-size: 3.8rem;
+        @include text_type_1;
+    }
+    &_subtitle {
+        &_1 {
+            font-family: $font-secondary;
+            font-size: 2.6rem;
+            @include text_type_1;
+        }
+    }
+    &_label {
+        &_1 {
+            font-family: $font-primary;
+            font-size: 1.4rem;
+            @include text_type_1;
+        }
+    }
+    &_h {
+        &1 {
+            font-family: $font-primary;
+            font-size: 2rem;
+            @include text_type_1;
+        }
+        &2 {
+            font-family: $font-secondary;
+            font-size: 1.8rem;
+            @include text_type_1;
+        }
+        &3 {
+            font-family: $font-secondary;
+            font-size: 1.6rem;
+            @include text_type_1;
+        }
+    }
+    &_normal {
+        font-family: $font-secondary;
+        font-size: 1.4rem;
+        text-align: left;
+        text-wrap: normal;
+    }
+    &_button {
+        &_1,
+        &_2 {
+            font-family: $font-primary;
+            text-align: center;
+            font-weight: bold;
+            text-wrap: normal;
+        }
+        &_1 {
+            font-size: 1.2rem;
+        }
+        &_2 {
+            font-size: 1.4rem;
+        }
+    }
+    &_input {
+        &_1 {
+            font-family: $font-primary;
+            font-size: 1.4rem;
+            text-indent: 1rem;
+            @include text_type_1;
+        }
+        &_dd {
+            &_1 {
+                font-family: $font-primary;
+                font-size: 1.3rem;
+                @include text_type_1;
+            }
+        }
+        &_ta {
+            font-family: $font-primary;
+            font-size: 1.4rem;
+            padding: 1rem;
+        }
+    }
+    &_comment {
+        &_1 {
+            font-family: $font-secondary;
+            font-size: 1.2rem;
+            text-align: left;
+        }
+    }
+    &_tab {
+        &_h1,
+        &_h2 {
+            font-family: $font-primary;
+            text-align: center;
+            text-wrap: normal;
+        }
+        &_h1 {
+            font-size: 1.4rem;
+        }
+        &_h2 {
+            font-size: 1.3rem;
+        }
+    }
+    &_table {
+        &_h1 {
+            font-family: $font-primary;
+            font-size: 1.6rem;
+            @include text_type_1;
+        }
+    }
+    &_text {
+        &-capitalize {
+            text-transform: capitalize;
+        }
+        &-uppercase {
+            text-transform: uppercase;
+        }
+        &-center {
+            text-align: center;
+        }
+        &-right {
+            text-align: right;
+        }
+    }
+}

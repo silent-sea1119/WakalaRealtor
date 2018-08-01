@@ -1,0 +1,54 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.ddisplay {
+    float: left;
+    margin: 3rem 10%;
+    border-bottom: solid .1rem $color-edulink-secondary;
+    width: 80%;
+    position: relative;
+    &--active,
+    &--disabled {
+        @include transition-type-1;
+        height: auto;
+        background-color: $color-primary-white;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        min-height: 30rem;
+    }
+    &--active {
+        opacity: 1;
+        width: 100%;
+    }
+    &--disabled {
+        opacity: 0;
+        width: 0;
+    }
+    &__title {
+        color: $color-edulink-primary;
+        width: 60%;
+        margin: 0 20% 2rem 20%;
+        padding: 1.5rem 0;
+        height: 5rem;
+        float: left;
+    }
+    &__buttons {
+        width: 100%;
+        height: 3rem;
+        float: left;
+        bottom: 1rem;
+        position: absolute;
+        &__button {
+            width: 3rem;
+            height: 3rem;
+            margin-left: 2rem;
+            float: right;
+        }
+    }
+    &__content {
+        width: 80%;
+        margin: 0 10%;
+        float: left;
+    }
+}

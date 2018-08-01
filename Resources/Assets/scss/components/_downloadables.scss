@@ -1,0 +1,12 @@
+.downloadables {
+    float: left;
+    height: auto;
+    width: 100%;
+    position: relative;
+    &__add {
+        width: 4rem;
+        height: 4rem;
+        float: left;
+        padding: 1rem;
+    }
+}

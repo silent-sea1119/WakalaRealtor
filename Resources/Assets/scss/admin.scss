@@ -1,0 +1,69 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "abstracts/functions";
+@import "base/base";
+@import "base/typography";
+@import "components/form-set-1";
+@import "components/headers/admin_header";
+@import "components/navMenu";
+@import "components/repo";
+@import "components/menuType1";
+@import "components/menuType2";
+@import "components/menuType3";
+@import "components/ddisplay";
+@import "components/ck";
+@import "components/progressBar/primary";
+//@import "components/admin/errorPopup-right";
+@import "components/admin/popup";
+#section_1 {
+    width: 85%;
+    float: right;
+    height: 90vh;
+    position: fixed;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-left: 15%;
+}
+
+.main {
+    margin-top: 10vh;
+}
+
+#insAdminSideBarMenu {
+    position: fixed;
+    height: 90%;
+    width: 15%;
+    z-index: 60;
+    background-color: $color-grey-dark;
+}
+
+.insLogo {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin: 5rem 0;
+    &__con {
+        max-height: 12rem;
+        max-width: 12rem;
+        min-height: 6rem;
+        min-width: 6rem;
+        background-color: $color-primary-white;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 1.5rem auto 0 auto;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
+
+#content {
+    width: 80%;
+    margin: 5rem 10%;
+    float: left;
+    &--full {
+        width: 100%;
+        float: left;
+    }
+}

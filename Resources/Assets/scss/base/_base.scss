@@ -1,0 +1,75 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+html {
+    font-size: 10px;
+    @include respond(desk-small) {
+        font-size: 8px;
+    }
+    @include respond(tab-land) {
+        font-size: 8px;
+    }
+    @include respond(tab-port) {
+        font-size: 7px;
+    }
+    @include respond(phone) {
+        font-size: 6px;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    &,
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+}
+
+body {
+    margin: 0;
+    &::-webkit-scrollbar {
+        width: .2rem;
+    }
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 .2rem rgba(0, 0, 0, 0.3);
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-edulink-primary;
+        outline: .1rem solid $color-edulink-primary;
+    }
+}
+
+.SB {
+    &::-webkit-scrollbar-thumb {
+        background-color: $color-edulink-primary;
+        outline: .1rem solid $color-edulink-primary;
+    }
+    &,
+    &--dark {
+        &::-webkit-scrollbar {
+            width: .2rem;
+        }
+        &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 .2rem rgba(0, 0, 0, 0.3);
+        }
+    }
+    &--dark {
+        &::-webkit-scrollbar-thumb {
+            background-color: $color-grey-dark;
+            outline: .1rem solid $color-grey-dark;
+        }
+    }
+}
+
+.container,
+.container-fluid {
+    padding: 0;
+}
+
+.row {
+    margin: 0;
+}

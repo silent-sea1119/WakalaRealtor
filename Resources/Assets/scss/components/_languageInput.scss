@@ -1,0 +1,145 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.languages {
+    float: left;
+    height: auto;
+    width: 100%;
+    position: relative;
+    &__add {
+        width: 4rem;
+        height: 4rem;
+        float: left;
+        padding: 1rem;
+    }
+}
+
+.lang {
+    box-shadow: $box-shadow-light;
+    height: 4rem;
+    float: left;
+    overflow: hidden;
+    margin: 0 2rem 2rem 0;
+    &__selected,
+    &__selected__front,
+    &__selected__back,
+    &__input {
+        &--active,
+        &--disabled {
+            @include transition-type-2;
+        }
+    }
+    &__selected {
+        &--active {
+            height: 4rem;
+            overflow: hidden;
+            width: auto;
+            position: relative;
+            float: left;
+            cursor: pointer;
+        }
+        &--disabled {
+            width: 0;
+            float: left;
+            overflow: hidden;
+            position: absolute;
+        }
+        &__lang {
+            padding: 1rem;
+            float: left;
+            color: $color-primary-black;
+            height: 100%;
+            max-width: 30rem;
+            overflow: hidden;
+        }
+        &__country {
+            padding: 1rem;
+            float: left;
+            background-color: $color-edulink-primary;
+            color: $color-primary-white;
+            height: 100%;
+            max-width: 30rem;
+            overflow: hidden;
+        }
+        &__front {
+            cursor: pointer;
+            &--active {
+                float: left;
+                width: auto;
+                position: relative;
+            }
+            &--disabled {
+                width: 0;
+                overflow: hidden;
+                position: absolute;
+            }
+        }
+        &__back {
+            &--active {
+                width: auto;
+                position: relative;
+            }
+            &--disabled {
+                width: 0;
+                overflow: hidden;
+                position: absolute;
+            }
+        }
+        &__return,
+        &__edit,
+        &__remove {
+            padding: 1rem;
+            float: left;
+            cursor: pointer;
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+    &__input {
+        &--active {
+            width: auto;
+            position: relative;
+            float: left;
+        }
+        &--disabled {
+            width: 0;
+            float: left;
+            overflow: hidden;
+            position: absolute;
+        }
+        &__country {
+            width: 50%;
+            float: left;
+        }
+        &__lang {
+            width: 50%;
+            float: left;
+            background-color: $color-edulink-primary;
+        }
+    }
+}
+
+.langDisplay {
+    &__lang {
+        height: 4rem;
+        float: left;
+        margin: 0 2rem 2rem 0;
+        &__lang {
+            padding: 1rem;
+            float: left;
+            color: $color-primary-black;
+            height: 100%;
+            max-width: 30rem;
+            overflow: hidden;
+        }
+        &__country {
+            padding: 1rem;
+            float: left;
+            background-color: $color-edulink-primary;
+            color: $color-primary-white;
+            height: 100%;
+            max-width: 30rem;
+            overflow: hidden;
+        }
+    }
+}

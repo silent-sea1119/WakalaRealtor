@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html>
+
+<head>
+
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    {{stylesheet_tag('admin_css')   |   safe}}
+    {{javascript_tag('admin_js')   | safe}}
+
+    <script type="application/javascript">
+        document.addEventListener("DOMContentLoaded",()=>{
+            document.getElementById("svg_icons").innerHTML = setSVGIcons();
+        })
+    </script>
+
+</head>
+
+<body>
+    <div id="svg_icons"></div>
+    <div id="insAdminHeaderComponent"></div>
+
+    <div class="main">
+        <div id="insAdminSidebarComponent"></div>
+
+    {{stylesheet_tag('admin_header_js') | safe}}
+    </div>
+
+</body>
+
+</html>

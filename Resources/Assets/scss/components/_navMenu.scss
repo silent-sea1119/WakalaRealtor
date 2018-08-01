@@ -1,0 +1,42 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.navMenu {
+    width: 100%;
+    height: auto;
+    float: left;
+    &,
+    &__subMenu__hd,
+    &__subMenu__expLink {
+        @include transition-type-1;
+    }
+    &__subMenu {
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+        &__hd {
+            width: 100%;
+            height: auto;
+            color: $color-primary-white;
+            padding: 1rem 0;
+            cursor: pointer;
+            &:hover {
+                background-color: $color-edulink-primary;
+            }
+        }
+        &__expBox {
+            display: none;
+            box-shadow: $box-shadow-light-inset;
+            padding: 1rem 0;
+            &__link {
+                width: 100%;
+                height: auto;
+                padding: .5rem 0;
+                color: $color-primary-white;
+                &:hover {
+                    background-color: $color-edulink-primary;
+                }
+            }
+        }
+    }
+}

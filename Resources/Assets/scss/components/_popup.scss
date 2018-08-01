@@ -1,0 +1,51 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.popup {
+    &__window {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    &__content {
+        background-color: $color-primary-white;
+        box-shadow: $box-shadow-light;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        float: left;
+        overflow: scroll;
+    }
+    &__exit {
+        position: absolute;
+        z-index: 500;
+        top: 0;
+        right: 0;
+        width: 5rem;
+        height: 5rem;
+        line-height: 5rem;
+        cursor: pointer;
+    }
+    &--active,
+    &--disabled {
+        @include transition-type-1;
+        float: left;
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 90vh;
+        top: 10vh;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.60);
+    }
+    &--active {
+        opacity: 1;
+        z-index: 500;
+    }
+    &--disabled {
+        opacity: 0;
+        z-index: -5;
+        visibility: hidden;
+    }
+}

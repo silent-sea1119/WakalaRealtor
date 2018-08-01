@@ -1,0 +1,35 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.text_input_2 {
+    border-style: none;
+    border-bottom: solid .1rem $color-grey-light;
+    width: 100%;
+    height: 100%;
+    transition: all 0.2s;
+    &:hover {
+        border-bottom-color: $color-edulink-primary;
+    }
+    &--correct,
+    &--wrong {
+        border-style: none;
+        text-indent: 1rem;
+        width: 100%;
+        height: 100%;
+    }
+    &--correct {
+        border-bottom: solid .2rem $color-success-primary;
+    }
+    &--wrong {
+        border-bottom: solid .2rem $color-error-primary;
+    }
+    &--transparent {
+        border-style: none;
+        border-bottom: solid .1rem $color-grey-light;
+        width: 100%;
+        height: 100%;
+        text-indent: 1rem;
+        background-color: transparent;
+        color: $color-primary-white;
+    }
+}

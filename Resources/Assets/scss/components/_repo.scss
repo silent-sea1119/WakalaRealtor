@@ -1,0 +1,553 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.repo {
+    width: 96%;
+    height: 96%;
+    margin: 2%;
+    position: relative;
+    overflow: scroll;
+    overflow-x: hidden;
+    display: grid;
+    grid-template-columns: 85% 15%;
+    grid-template-rows: auto;
+    &__fileView {
+        height: 100%;
+        position: relative;
+        float: left;
+        grid-column: 1/2;
+        padding: 0 2%;
+        &__topBar {
+            width: 100%;
+            min-height: 6rem;
+            padding: 1rem 0;
+            border-bottom: solid .1rem $color-edulink-primary;
+            float: left;
+            &__fName {
+                color: $color-edulink-primary;
+                width: 40%;
+                line-height: 4rem;
+                padding: 0 1rem;
+                float: left;
+            }
+            &__buttons {
+                float: right;
+                max-width: 60%;
+                overflow: hidden;
+            }
+            &__button {
+                width: auto;
+                height: 4rem;
+                float: right;
+                overflow: hidden;
+                opacity: 0.8;
+                cursor: pointer;
+                margin-left: 1%;
+            }
+            &__toggle {
+                display: none;
+            }
+            @include respond(phone) {
+                &__buttons {
+                    height: 0;
+                    &,
+                    &--active {
+                        width: 100%;
+                        float: left;
+                        clear: both;
+                        @include transition-type-2;
+                    }
+                    &--active {
+                        height: 10rem;
+                        padding: 2rem 0;
+                    }
+                }
+                &__toggle {
+                    float: right;
+                    display: block;
+                    width: 3rem;
+                    height: 3rem;
+                }
+            }
+        }
+    }
+    &__categoryView {
+        height: 40rem;
+        position: relative;
+        float: left;
+        grid-column: 2/2;
+        padding: 0 1%;
+        &__menu {
+            width: 100%;
+            margin: 0 auto 2.5rem auto;
+            height: auto;
+            float: left;
+        }
+        &__head {
+            width: 90%;
+            height: 4rem;
+            cursor: pointer;
+            margin: .25rem 5%;
+            float: left;
+        }
+    }
+    &__content {
+        width: 100%;
+        height: 80%;
+        float: left;
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+    @include respond(phone) {
+        grid-template-columns: 100%;
+        grid-template-rows: auto;
+        &__fileView {
+            grid-column: unset;
+            grid-row: 2/2;
+        }
+        &__categoryView {
+            grid-column: unset;
+            grid-row: 1/2;
+            height: auto;
+        }
+    }
+}
+
+.repoFileUpload {
+    &__main {
+        width: 100%;
+        position: relative;
+    }
+    &__fileUpload {
+        width: 10rem;
+        height: 100%;
+        float: left;
+        margin-right: 2%;
+        cursor: pointer;
+        position: relative;
+        .btn_1 {
+            padding: 0px;
+        }
+        &__back {
+            width: 100%;
+            height: auto;
+            padding: 1rem;
+            position: absolute;
+            z-index: 1;
+        }
+        &__front {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: 10;
+            input {
+                width: 100%;
+                overflow: hidden;
+                height: 100%;
+                opacity: 0;
+            }
+        }
+    }
+    &__button {
+        width: 100px;
+        float: left;
+    }
+    &__fileName {
+        width: auto;
+        height: 100%;
+        padding: 1rem 2%;
+        display: none;
+        color: $color-primary-black;
+        float: left;
+    }
+    &__errorBox {
+        width: 100%;
+        height: 5rem;
+        background-color: $color-error-secondary;
+        color: $color-primary-white;
+        padding: 1rem 2%;
+        display: none;
+    }
+}
+
+.repoFileUpload,
+.repoCreateFolder {
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    float: left;
+    overflow: hidden;
+    display: none;
+    background-color: $color-primary-white;
+}
+
+.repoCreateFolder {
+    &__input {
+        height: 5rem;
+        overflow: hidden;
+    }
+    &__label {
+        float: left;
+        width: auto;
+        padding: 1rem;
+        color: $color-edulink-primary;
+    }
+    &__button {
+        height: 5rem;
+        margin: 0 1rem;
+        float: left;
+        width: 10rem;
+        cursor: pointer;
+    }
+    &__name {
+        float: left;
+        width: 40%;
+        height: 100%;
+        padding: 1rem 2rem;
+    }
+}
+
+.repoFolder {
+    width: 12rem;
+    height: 15rem;
+    position: relative;
+    float: left;
+    margin: 2rem 1.5%;
+    box-shadow: 0 .1rem 2rem -.5rem $color-primary-black;
+    &__front {
+        width: 100%;
+        height: 15rem;
+        position: absolute;
+        z-index: 0;
+        float: left;
+        overflow: hidden;
+    }
+    &__preview {
+        width: 100%;
+        height: 80%;
+        padding: 5%;
+        overflow: hidden;
+    }
+    &__icon {
+        width: 100%;
+        height: 10rem;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    &__front {
+        &__bottom {
+            height: 20%;
+            width: 100%;
+            overflow: hidden;
+            background-color: $color-edulink-primary;
+        }
+    }
+    &__name {
+        height: 100%;
+        width: 80%;
+        padding: 2.5% 5%;
+        color: $color-primary-white;
+        float: left;
+        overflow: hidden;
+        overflow-wrap: break-word;
+    }
+    &__menuBtn {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 5% auto;
+        float: left;
+    }
+    &__back {
+        width: 100%;
+        height: 15rem;
+        position: absolute;
+        z-index: 10;
+        float: left;
+        overflow: hidden;
+        bottom: 0;
+        display: none;
+        background-color: $color-primary-white;
+    }
+    &__menu {
+        width: 90%;
+        height: 65%;
+        margin: 10% 5%;
+        float: left;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        &__option {
+            &,
+            &--delete {
+                width: 100%;
+                height: 3rem;
+                float: left;
+            }
+            &--delete {
+                margin-top: 1rem;
+            }
+        }
+    }
+    &__back {
+        &__bottom {
+            width: 100%;
+            height: 20%;
+            float: left;
+            &__box {
+                width: 80%;
+                height: 100%;
+                float: left;
+            }
+        }
+    }
+}
+
+.repoFile {
+    width: 12rem;
+    height: 15rem;
+    position: relative;
+    float: left;
+    margin: 2rem 1.5%;
+    box-shadow: $box-shadow-light;
+    &,
+    &--selected {
+        @include transition-type-1;
+    }
+    &--selected {
+        width: 12rem;
+        height: 15rem;
+        position: relative;
+        float: left;
+        margin: 1rem 1.5% 3rem 1.5%;
+        box-shadow: $box-shadow-success;
+    }
+    &__front {
+        width: 100%;
+        height: 15rem;
+        position: absolute;
+        z-index: 0;
+        float: left;
+        overflow: hidden;
+    }
+    &__preview {
+        width: 100%;
+        height: 80%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: auto;
+            vertical-align: middle;
+        }
+    }
+    &__icon {
+        width: 100%;
+        height: 10rem;
+        margin: 5% auto;
+        overflow: hidden;
+    }
+    &__front {
+        &__bottom {
+            height: 20%;
+            width: 100%;
+            overflow: hidden;
+            background-color: $color-edulink-primary;
+        }
+    }
+    &__name {
+        height: 100%;
+        width: 80%;
+        padding: 2.5% 5%;
+        color: $color-primary-white;
+        float: left;
+        overflow: hidden;
+        overflow-wrap: break-word;
+    }
+    &__menuBtn {
+        width: 1.5rem;
+        height: 1.5rem;
+        margin: 5% auto;
+        float: left;
+    }
+    &__back {
+        width: 100%;
+        height: 15rem;
+        position: absolute;
+        z-index: 10;
+        float: left;
+        overflow: hidden;
+        bottom: 0;
+        display: none;
+        background-color: $color-primary-white;
+    }
+    &__menu {
+        width: 90%;
+        height: 65%;
+        margin: 10% 5%;
+        float: left;
+        overflow: scroll;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        &__option {
+            &,
+            &--delete {
+                width: 100%;
+                height: 3rem;
+                float: left;
+            }
+            &--delete {
+                margin-top: 1rem;
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+    &__back {
+        &__bottom {
+            width: 100%;
+            height: 20%;
+            float: left;
+            &__box {
+                width: 80%;
+                height: 100%;
+                float: left;
+            }
+        }
+    }
+}
+
+.repoMD {
+    width: 100%;
+    padding: 0 1%;
+    position: relative;
+    &__fileView {
+        width: 100%;
+        position: relative;
+        float: left;
+        &__topBar {
+            width: 100%;
+            height: 6rem;
+            padding: 1rem 0;
+            float: left;
+            &__fName {
+                color: $color-edulink-primary;
+                width: 40%;
+                height: 4rem;
+                padding: 0 1rem;
+                float: left;
+            }
+            &__button {
+                width: auto;
+                height: 4rem;
+                float: right;
+                overflow: hidden;
+                opacity: 0.8;
+                cursor: pointer;
+                margin-left: 1%;
+            }
+        }
+    }
+    &__content {
+        width: 100%;
+        float: left;
+        min-height: 10rem;
+    }
+}
+
+.repoStat {
+    width: 100%;
+    float: left;
+    margin-bottom: 2rem;
+    &__topBar {
+        &__title {
+            float: left;
+            padding: 1rem 2rem 1rem 0;
+            color: $color-edulink-primary;
+        }
+    }
+    &__bar {
+        float: left;
+        width: 100%;
+        height: 3rem;
+        overflow: hidden;
+        position: relative;
+    }
+    &__occupied,
+    &__free {
+        height: 100%;
+        overflow: hidden;
+        line-height: 3rem;
+        position: absolute;
+        @include transition-type-2;
+        &:hover {
+            width: 100% !important;
+            z-index: 5;
+        }
+    }
+    &__occupied {
+        left: 0;
+        background-color: $color-success-primary;
+        color: $color-primary-white;
+    }
+    &__free {
+        right: 0;
+        background-color: $color-primary-white;
+        color: $color-edulink-primary;
+        border: solid .1rem $color-edulink-primary;
+    }
+}
+
+.repoPopup {
+    &__front {
+        background-color: $color-primary-white;
+        box-shadow: $box-shadow-light;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        float: left;
+    }
+    &--active,
+    &--disabled {
+        @include transition-type-1;
+        float: left;
+        overflow: hidden;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+    }
+    &--active {
+        opacity: 1;
+        z-index: 50;
+    }
+    &--disabled {
+        opacity: 0;
+        z-index: -5;
+    }
+}
+
+.deletePP {
+    width: 100%;
+    padding: 5% 10%;
+    position: relative;
+    float: left;
+    &__content {
+        float: left;
+        width: 100%;
+        margin: 3rem 0;
+    }
+    &__buttons {
+        width: 38rem;
+        float: left;
+        margin: 2rem 0 2rem 50%;
+        transform: translateX(-50%);
+        &__button {
+            width: 15rem;
+            margin: 0 2rem;
+            float: left;
+            height: 5rem;
+        }
+    }
+}

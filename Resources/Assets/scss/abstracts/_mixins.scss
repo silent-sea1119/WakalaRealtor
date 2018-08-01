@@ -1,0 +1,67 @@
+@mixin transition-type-1 {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+@mixin transition-type-2 {
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -ms-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+@mixin transition-type-3 {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+@mixin opacity-full {
+    -webkit-opacity: 1.0;
+    -moz-opacity: 1.0;
+    opacity: 1.0;
+}
+
+@mixin respond($breakpoint) {
+    @if $breakpoint==mini {
+        //320px
+        @media (max-width: 20em) {
+            @content
+        }
+        ;
+    }
+    @if $breakpoint==phone {
+        @media (max-width: 37.5em) {
+            //600px
+            @content
+        }
+        ;
+    }
+    @if $breakpoint==tab-land {
+        @media (max-width: 56.25em) {
+            //900px  
+            @content
+        }
+        ;
+    }
+    @if $breakpoint==tab-port {
+        //1200px
+        @media (max-width: 75em) {
+            @content
+        }
+        ;
+    }
+    @if $breakpoint==desk-small {
+        //1600px
+        @media (max-width: 100em) {
+            @content
+        }
+        ;
+    }
+}

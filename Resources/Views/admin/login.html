@@ -1,0 +1,29 @@
+{% extends "layouts/main.html" %}
+
+{%  block title %}Admin Login{% endblock   %}
+
+{%  block scripts %}
+    {{stylesheet_tag('admin_login_css') | safe}}
+
+    <style>
+        #back_img {
+            background: url("assets/images/back--11.jpg") center;
+            background-size: cover;
+        }
+    </style>
+
+{%  endblock    %}
+
+{%  block body  %}
+    <div id="loginComponent"></div>
+
+    {{javascript_tag('admin_login_js')  |   safe}}
+
+{% endblock %}
+
+{%  block footer%}
+
+    <div id="footerComponent" data-start="1"></div>
+    {{javascript_tag('main_footer_js')  |   safe}}
+    
+{%  endblock%}

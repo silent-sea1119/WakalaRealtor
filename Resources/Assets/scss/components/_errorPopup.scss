@@ -1,0 +1,61 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.ePP {
+    position: fixed;
+    z-index: 9999;
+    bottom: 1rem;
+    left: 3rem;
+    width: 20%;
+    @include respond(tab-port) {
+        width: 35%;
+    }
+    @include respond(tab-land) {
+        width: 45%;
+    }
+    @include respond(phone) {
+        width: 65%;
+    }
+    &__error {
+        &--disabled,
+        &--active {
+            float: left;
+            margin: 1rem 0;
+            @include transition-type-3;
+        }
+        &--active {
+            opacity: 1;
+            box-shadow: $box-shadow-light;
+            border-radius: .2rem;
+            width: 100%;
+            position: relative;
+        }
+        &--disabled {
+            opacity: 0;
+            width: 0;
+        }
+        &__icon {
+            width: 8rem;
+            height: 10rem;
+            position: absolute;
+            z-index: 500;
+            left: 0;
+            background-color: $color-error-primary;
+            .icon {
+                width: 4rem;
+                height: 4rem;
+                margin: 3rem 2rem;
+                float: left;
+                fill: $color-primary-white;
+            }
+        }
+        &__content {
+            color: $color-grey-dark;
+            background-color: $color-primary-white;
+            float: left;
+            width: 100%;
+            min-height: 10rem;
+            padding: 1rem 0 1rem 9rem;
+        }
+    }
+}

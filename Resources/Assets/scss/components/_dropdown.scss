@@ -1,0 +1,28 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.dropdown {
+    &,
+    &--active,
+    &--failed,
+    &--edulink {
+        border-style: none;
+        width: 100%;
+        height: 100%;
+        padding: .5rem 0;
+        option {
+            line-height: 4rem;
+            padding: 0 1rem;
+        }
+    }
+    &--failed {
+        background-color: $color-error-primary;
+    }
+    &--active {
+        background-color: $color-success-primary;
+    }
+    &--edulink {
+        background-color: $color-edulink-primary;
+        color: $color-primary-white;
+    }
+}

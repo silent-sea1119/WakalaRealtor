@@ -1,0 +1,39 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.detail_1 {
+    min-height: 3.5rem;
+    height: auto;
+    width: 100%;
+    margin-bottom: 2rem;
+    float: left;
+    position: relative;
+    &__label {
+        background-color: $color-edulink-secondary;
+        color: $color-primary-white;
+        box-shadow: $box-shadow-light;
+        width: 40%;
+        float: left;
+        padding: 1rem 2rem;
+        text-align: right;
+    }
+    &__value {
+        color: $color-grey-dark;
+        width: 47.5%;
+        min-height: 3.5rem;
+        float: left;
+        margin-left: 5%;
+        padding: .5rem 0;
+    }
+    &__input {
+        color: $color-grey-dark;
+        width: 40%;
+        min-height: 3.5rem;
+        float: left;
+        margin-left: 5%;
+    }
+    &__comment {
+        float: left;
+        margin-top: 1rem;
+    }
+}
