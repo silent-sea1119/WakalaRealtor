@@ -4,16 +4,14 @@ const path = require("path"),
     ManifestRevisionPlugin = require("manifest-revision-webpack-plugin"),
     WebpackMd5Hash = require('webpack-md5-hash');
 
-var root = "./Resources/assets/";
-var jsRoot = "./Resources/assets/js/";
-var scssRoot = "./Resources/assets/scss/";
+var root = "./Resources/Assets/";
+var jsRoot = "./Resources/Assets/js/";
+var scssRoot = "./Resources/Assets/scss/";
+var pluginRoot = ".Resources/Assets/plugins/";
 
 var entries = {
     main_css: [
         scssRoot + "main.scss"
-    ],
-    main_js: [
-        jsRoot + "svg_icon.js"
     ],
     main_header_js: [
         jsRoot + "pages/main/header.jsx"
@@ -21,12 +19,48 @@ var entries = {
     main_footer_js: [
         jsRoot + "pages/main/footer.jsx"
     ],
+    main_article_css: [
+         scssRoot + "pages/main/article.scss"
+     ],
+    main_article_js: [
+         jsRoot + "pages/main/article.jsx"
+     ],
+    admin_css: [
+        scssRoot + "admin.scss"
+    ],
+    admin_header_js: [
+        jsRoot + "pages/admin/header.jsx"
+    ],
     admin_login_css: [
         scssRoot + "pages/admin/login.scss"
     ],
     admin_login_js: [
         jsRoot + "pages/admin/login.jsx"
-    ]
+    ],
+    admin_repo_css:[
+        scssRoot + "pages/admin/repo.scss"
+    ],
+    admin_repo_js: [
+        jsRoot + "pages/admin/repo.jsx"
+    ],
+    admin_posts_css: [
+            scssRoot + "pages/admin/posts.scss"
+    ],
+    admin_posts_js: [
+            jsRoot + "pages/admin/posts.jsx"
+    ],
+    admin_addArticle_css: [
+        scssRoot + "pages/admin/addArticle.scss"
+    ],
+    admin_addArticle_js: [
+        jsRoot + "pages/admin/addArticle.jsx"
+    ],
+    admin_editArticle_css: [
+        scssRoot + "pages/admin/editArticle.scss"
+    ],
+    admin_editArticle_js: [
+        jsRoot + "pages/admin/editArticle.jsx"
+    ],
 }
 
 const config = {
@@ -42,10 +76,14 @@ const config = {
     },
     module: {
         rules: [{
-            test: /\.jsx?/,
-            exclude: /node_modules/,
+            test: /\.(jsx|js)?$/,
+            exclude: [/node_modules/],
             use: 'babel-loader'
         }, 
+        {
+            test: /\.css$/,
+            use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader']
+        },
         {
             test: /\.scss$/,
             use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']

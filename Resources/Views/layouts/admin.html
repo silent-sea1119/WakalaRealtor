@@ -9,24 +9,25 @@
     {{stylesheet_tag('admin_css')   |   safe}}
     {{javascript_tag('admin_js')   | safe}}
 
-    <script type="application/javascript">
-        document.addEventListener("DOMContentLoaded",()=>{
-            document.getElementById("svg_icons").innerHTML = setSVGIcons();
-        })
-    </script>
+    {% block styles %}{% endblock %}
+
+    {% block scripts %}{% endblock %}
+
 
 </head>
 
 <body>
     <div id="svg_icons"></div>
-    <div id="insAdminHeaderComponent"></div>
+    <div id="adminHeaderComponent"></div>
 
     <div class="main">
-        <div id="insAdminSidebarComponent"></div>
+        <div id="adminSidebarComponent"></div>
 
-    {{stylesheet_tag('admin_header_js') | safe}}
+    {{javascript_tag('admin_header_js') | safe}}
+
+    {% block body %}{% endblock %}
+
     </div>
-
 </body>
 
 </html>

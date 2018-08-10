@@ -10,27 +10,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {{stylesheet_tag('main_css') |   safe}}
-    {{javascript_tag('main_js')  |   safe}}
 
     {% block styles %}{% endblock%}
 
     {% block scripts %}{% endblock%}
-
-    <script type="application/javascript">
-        document.addEventListener("DOMContentLoaded", () => {
-            document.getElementById("svg_icons").innerHTML = setSVGIcons();
-        })
-    </script>
 
 </head>
 
 <body>
     <div id="svg_icons"></div>
     <div id="mainHeaderComponent"></div>
+    {{javascript_tag('main_header_js') | safe }}
 
     {% block body %}{%endblock%}
-
-    {{javascript_tag('main_header.js')}}
 </body>
 
 </html>

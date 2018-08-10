@@ -1,0 +1,89 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+
+.mul_text_input {
+    &,
+    &--normal {
+        float: left;
+        width:100%;
+        textarea {
+            border-style: none;
+            border-radius: .5rem;
+            box-shadow: $input-box-shadow;
+            width: 100%;
+            padding: 1rem;
+            text-indent:0 !important;
+            line-height: 2.5rem !important;
+        }
+    }
+    &--fail,
+    &--success,
+    &--warning,
+    &--danger,
+    &--loading {
+        textarea {
+            border-style: none;
+            text-indent: 1rem;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &--loading textarea {
+        border: solid .2rem $color-success-secondary;
+    }
+    &--fail textarea {
+        border: solid .2rem $color-error-primary;
+    }
+    &--success textarea {
+        border: solid .2rem $color-success-primary;
+    }
+    &--warning textarea {
+        border: solid .2rem $color-warning-primary;
+    }
+    &--danger textarea {
+        border: solid .2rem $color-danger-primary;
+    }
+    &__error {
+        &--active,
+        &--disabled {
+            @include transition-type-1;
+        }
+        &--active {
+            width: 100%;
+            float: left;
+            background-color: $color-error-secondary;
+            color: $color-primary-white;
+            padding: 1rem;
+            position: relative;
+        }
+        &--disabled {
+            width: 0;
+            overflow: hidden;
+            position: absolute;
+        }
+    }
+    &__comment {
+        &--active,
+        &--disabled {
+            @include transition-type-1;
+        }
+        &--active {
+            width: 100%;
+            float: left;
+            color: $color-grey-fair;
+            padding: 1rem 0;
+            position: relative;
+        }
+        &--disabled {
+            width: 0;
+            overflow: hidden;
+            position: absolute;
+        }
+    }
+    &__label {
+        float: left;
+        padding: 1rem 0;
+        color: $color-edulink-primary;
+        clear: both;
+    }
+}

@@ -1,0 +1,61 @@
+#main {
+  position: relative; }
+
+.form__image {
+  width: 100%;
+  height: 30rem; }
+  .form__image #img_select {
+    width: 100%;
+    height: 100%;
+    position: relative; }
+    .form__image #img_select__img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 0;
+      float: left;
+      overflow: hidden; }
+    .form__image #img_select__buttons {
+      width: 10%;
+      height: 5rem;
+      position: absolute;
+      bottom: 0;
+      margin: 0 40%;
+      z-index: 20;
+      float: left;
+      overflow: hidden; }
+
+.form__box {
+  position: relative;
+  width: 60%;
+  margin: 5rem 20% 10rem 20%;
+  float: left; }
+
+.form__title, .form__author, .form__textBox, .form__summaryBox, .form__tagInput {
+  float: left;
+  width: 100%;
+  margin-bottom: 3rem; }
+
+.form__summaryBox textarea {
+  min-height: 5rem;
+  max-height: 15rem;
+  color: #171717;
+  padding: 1rem; }
+
+.form__buttons {
+  float: left;
+  transform: translateX(-50%);
+  margin: 5rem 0 5rem 50%;
+  width: 38rem; }
+  .form__buttons__button {
+    width: 15rem;
+    margin: 0 2rem;
+    float: left;
+    height: 5rem; }
+    .form__buttons__button:last-child {
+      margin-right: 0; }
+
+.popUp__content {
+  width: 150vh;
+  height: 80vh; }
+

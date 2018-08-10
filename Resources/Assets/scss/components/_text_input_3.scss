@@ -1,0 +1,82 @@
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+.text_input_3 {
+    &,
+    &--normal {
+        float:left;
+        input {
+            border-style: none;
+            border-bottom: solid .1rem $color-grey-light;
+            width: 20rem;
+            height: 100%;
+            transition: all 0.2s;
+            float:left;
+            &:hover {
+                border-bottom-color: $color-edulink-primary;
+            }
+        }
+    }
+    &--fail,
+    &--success,
+    &--warning,
+    &--danger,
+    &--loading{
+        input {
+            border-style: none;
+            text-indent: 1rem;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &--transparent {
+        input {
+            border-style: none;
+            border-bottom: solid .1rem $color-grey-light;
+            width: 100%;
+            height: 100%;
+            text-indent: 1rem;
+            background-color: transparent;
+            color: $color-primary-white;
+        }
+    }
+    &--loading input{
+        border-bottom: solid .2rem $color-success-secondary;
+    }
+    &--fail input {
+        border-bottom: solid .2rem $color-error-primary;
+    }
+    &--success input {
+        border-bottom: solid .2rem $color-success-primary;
+    }
+    &--warning input {
+        border-bottom: solid .2rem $color-warning-primary;
+    }
+    &--danger input {
+        border-bottom: solid .2rem $color-danger-primary;
+    }
+    &__error{
+        &--active,
+        &--disabled {
+            @include transition-type-1;
+        }
+        &--active {
+            width: 100%;
+            float: left;
+            background-color: $color-error-secondary;
+            color: $color-primary-white;
+            padding: 1rem;
+            position: relative;
+        }
+        &--disabled {
+            width: 0;
+            overflow: hidden;
+            position: absolute;
+        }
+    }
+    &__label{
+        float: left;
+        width: auto;
+        padding: 1rem;
+        color: $color-edulink-primary;
+    }
+}

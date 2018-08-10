@@ -1,9 +1,12 @@
-from flask import render_template
+from flask import render_template,jsonify
 from flask_restful import reqparse
-from flask_jwt_extended import jwt_required,create_access_token,\
-create_refresh_token, get_raw_jwt
+from flask_jwt_extended import jwt_required,create_access_token,create_refresh_token, get_raw_jwt, set_access_cookies,set_refresh_cookies,unset_jwt_cookies
 from App.Models.RevokedToken import RevokedTokenModel
 from App.Models.AdminUser import AdminUserModel
+from App.Models.RepoFolder import RepoFolderModel
+from App.Models.Article import ArticleModel
+from App.Models.Post import PostModel
+from App.Models.Tag import TagModel
 
 class AdminController:
     def adminLoginPage(self):
@@ -11,6 +14,15 @@ class AdminController:
 
     def repoPage(self):
         return render_template('admin/repo.html')
+
+    def postsPage(self):
+        return render_template('admin/posts.html')
+
+    def addArticlePage(self):
+        return render_template('admin/addArticle.html')
+
+    def editArticlePage(self,param):
+        return render_template('admin/editArticle.html',id=param)
 
     @staticmethod
     def authenticate(username, password):
@@ -38,20 +50,23 @@ class AdminController:
         current_user = AdminUserModel.find_by_username(data['username'])
 
         if not current_user:
-            return {"error":1,'message': 'User {} doesn\'t exist'.format(data['username'])}
+            return jsonify({"error": 1, 'message': 'User {} doesn\'t exist'.format(data['username'])})
 
         if current_user.authenticate(data['password']):
-            access_token = create_access_token(identity=data['username'])
-            refresh_token = create_refresh_token(identity=data['username'])
+            access_token = create_access_token(identity=current_user.id)
+            refresh_token = create_refresh_token(identity=current_user.id)
 
-            return {
-                'error':0,
-                'message': 'Logged in as {}'.format(current_user.username),
-                'access_token': access_token,
-                'refresh_token': refresh_token
-            }
+            resp = jsonify({
+                'error': 0,
+                'message': 'Logged in as {}'.format(current_user.username)
+            })
+
+            set_access_cookies(resp,access_token,900)
+            set_refresh_cookies(resp,refresh_token)
+
+            return resp , 200
         else:
-            return {'error':2,'message': 'Wrong credentials'}
+            return jsonify({'error': 2, 'message': 'Wrong credentials'})
 
     @staticmethod
     def adminLogOut():
@@ -59,6 +74,64 @@ class AdminController:
         try:
             revoked_token = RevokedTokenModel(token=jti)
             revoked_token.add()
-            return {"error":0,'error_msg': 'Access token has been revoked'}
+
+            resp = jsonify({"error":0,'error_msg': 'Access token has been revoked'})
+            unset_jwt_cookies(resp)
+
+            return resp
         except:
-            return {"error": 1, 'error_msg': 'Something went wrong'}, 500
+            return jsonify({"error": 1, 'error_msg': 'Something went wrong'}), 500
+
+    @staticmethod
+    def adminData():
+        return jsonify({'error': 0})
+
+    @staticmethod
+    def retrieveRepoContentByFolder(folderId):
+        if folderId == "root":
+            content = RepoFolderModel().get_root_content(folderId)
+            return jsonify({"error": 0, "content": content})
+
+        else :
+            folder = RepoFolderModel().find_by_id(folderId)
+            if bool(folder):
+                content = RepoFolderModel().get_content(folderId)
+                return jsonify({"error": 0, "content": content})
+            else:
+                return jsonify({"error":1, "error_msg":"Folder doesn't exist!"})
+
+    @staticmethod
+    def getPosts(offset):
+        posts = PostModel.get_posts_by_offset(offset)
+        tags = []
+
+        for p in posts:
+            ts = p.post.tags
+
+            for t in ts:
+                if t.tagId not in tags:
+                    tags.append(t.tagId)
+
+        tagsFound = TagModel.get_all_tags(tags)
+        content = []
+
+        for p in posts:
+            x = {}
+            x['log'] = p.json()
+            x['post'] = p.post.json()
+            x['post']['body'] = ""
+
+            ts = p.post.tags
+            xtags = []
+
+            for t in ts:
+                for y in tagsFound:
+                    if t.tagId == y.id:
+                        xtags.append(y.json())
+            
+            x['tags'] = xtags
+
+            content.append(x)
+
+
+        return {"error":0,"content":content}

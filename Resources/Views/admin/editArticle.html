@@ -1,0 +1,21 @@
+{% extends "layouts/admin.html" %} 
+
+{% block title %}Edit Article{% endblock %}
+
+{% block styles %}
+
+{{stylesheet_tag('admin_editArticle_css')| safe}}
+
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %} 
+
+
+{% block body %}
+
+<div id="editArticleComponent" data-article="{{id}}"></div>
+
+{{javascript_tag('admin_editArticle_js') | safe}} 
+
+{% endblock %}

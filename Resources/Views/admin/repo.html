@@ -1,0 +1,18 @@
+{% extends "layouts/admin.html" %}
+
+{%  block title %}Repository{% endblock   %}
+
+{%  block scripts %}
+    {{stylesheet_tag('admin_repo_css') | safe}}
+
+{%  endblock    %}
+
+{%  block body  %}
+
+    <div id="section_1">
+        <div id="main"></div>
+    </div>
+
+    {{javascript_tag('admin_repo_js')  |   safe}}
+
+{% endblock %}

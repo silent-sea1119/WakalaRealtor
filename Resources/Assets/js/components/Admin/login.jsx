@@ -73,22 +73,22 @@ class Login extends Component {
             method:"POST",
             data: formData
         }).then((response)=>{
-            console.log("Log in successful! Error:" + response.data.error);
-            console.log(response);
- 
-            switch (response.data.error) {
+            var data = response.data;
+            console.log("Log in successful! Error:" + data.error);
+
+            switch (data.error) {
                 case 0: {
                     //localStorage.setItem('currentUser', response.user);
-                    component.setAuthorization(response.access_token);
-                    localStorage.setItem('access_token',response.access_token);
-                    localStorage.setItem('refresh_token',response.refresh_token);
+                    //component.setAuthorization(data.access_token);
+                    //localStorage.setItem('access_token', data.access_token);
+                    //localStorage.setItem('refresh_token', data.refresh_token);
                     window.location.href = webUrl + "admin/posts";
                     break;
                 }
                 case 1:
                 case 2:
                 case 3:{
-                    state.error = response.data.error;
+                    state.error = data.data.error;
                     state.buttons[0].state.status = 1;
                     component.setState(state);
                     break;

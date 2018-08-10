@@ -1,0 +1,40 @@
+@import "../../abstracts/mixins";
+@import "../../abstracts/variables";
+@import "../../components/admin/article";
+#main {
+    height: 40rem;
+    margin: 5rem auto;
+    position: static;
+}
+
+.topBar {
+    border-bottom: solid .1rem $color-edulink-primary;
+    float: left;
+    width: 100%;
+    &__title {
+        color: $color-edulink-primary;
+        padding: 1rem 2rem;
+        float: left;
+    }
+    &__right {
+        height: 5rem;
+        padding: 0;
+        float: right;
+        &__add {
+            height: 5rem;
+            width: 15rem;
+            float: right;
+        }
+        &__button {
+            height: 4rem;
+            width: auto;
+            float: right;
+        }
+    }
+}
+
+.loadBtn{
+    margin-top:2rem;
+    float:left;
+    width:100%;
+}

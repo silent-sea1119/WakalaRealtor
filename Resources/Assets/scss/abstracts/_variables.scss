@@ -6,8 +6,8 @@ $font-secondary: "Trebuchet MS",
 Arial,
 Helvetica,
 sans-serif;
-$color-edulink-primary:#909;
-$color-edulink-secondary:#939;
+$color-edulink-primary:rgb(15, 79, 255);
+$color-edulink-secondary:rgb(20, 161, 255);
 $color-primary-white:#FFF;
 $color-secondary-white:#CCC;
 $color-primary-black:#000;
@@ -19,9 +19,8 @@ $color-error-primary:#b33030;
 $color-error-secondary:rgba(216, 77, 71, 1);
 $color-success-primary: #00a84f;
 $color-success-secondary: #00a84f;
-$brand-primary: #3097D1;
 $color-info: #8eb4cb;
-$color-warning-primary: #cbb956;
+$color-warning-primary: #ffd900;
 $color-danger-primary: #b33030;
 $input-box-shadow:0 .1rem .3rem .1rem #CCC inset;
 $box-shadow-light-inset:0 .1rem 2rem -.5rem $color-primary-black inset;

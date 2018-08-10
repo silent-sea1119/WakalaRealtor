@@ -1,0 +1,22 @@
+{% extends "layouts/main.html" %} 
+
+{% block title %}Article{% endblock %}
+
+{% block styles %}
+
+{{stylesheet_tag('main_article_css')| safe}}
+
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %} 
+
+
+{% block body %}
+
+<div id="articleComponent" data-article="{{articleId}}"></div>
+
+
+{{javascript_tag('main_article_js') | safe}} 
+
+{% endblock %}

@@ -32,7 +32,7 @@
             }
             &__buttons {
                 float: right;
-                max-width: 60%;
+                width: 60%;
                 overflow: hidden;
             }
             &__button {
@@ -172,26 +172,31 @@
 
 .repoFileUpload,
 .repoCreateFolder {
-    width: 100%;
-    height: auto;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    float: left;
-    overflow: hidden;
-    display: none;
-    background-color: $color-primary-white;
+    &--active,
+    &--disabled {
+        @include transition-type-1;
+        background-color: $color-primary-white;
+        float: left;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+    &--active {
+        opacity: 1;
+        max-height: 30rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    &--disabled {
+        opacity: 0;
+        height: 0;
+    }
 }
 
 .repoCreateFolder {
     &__input {
-        height: 5rem;
+        height: 4rem;
         overflow: hidden;
-    }
-    &__label {
-        float: left;
-        width: auto;
-        padding: 1rem;
-        color: $color-edulink-primary;
     }
     &__button {
         height: 5rem;
@@ -219,9 +224,24 @@
         width: 100%;
         height: 15rem;
         position: absolute;
-        z-index: 0;
+        z-index: 10;
         float: left;
         overflow: hidden;
+        visibility: visible;
+        &__bottom {
+            height: 20%;
+            width: 100%;
+            overflow: hidden;
+            background-color: $color-edulink-primary;
+        }
+    }
+    &__back {
+        width: 0;
+        height: 15rem;
+        float: left;
+        overflow: hidden;
+        bottom: 0;
+        display: none;
     }
     &__preview {
         width: 100%;
@@ -234,14 +254,6 @@
         height: 10rem;
         margin: 0 auto;
         overflow: hidden;
-    }
-    &__front {
-        &__bottom {
-            height: 20%;
-            width: 100%;
-            overflow: hidden;
-            background-color: $color-edulink-primary;
-        }
     }
     &__name {
         height: 100%;
@@ -257,17 +269,6 @@
         height: 1.5rem;
         margin: 5% auto;
         float: left;
-    }
-    &__back {
-        width: 100%;
-        height: 15rem;
-        position: absolute;
-        z-index: 10;
-        float: left;
-        overflow: hidden;
-        bottom: 0;
-        display: none;
-        background-color: $color-primary-white;
     }
     &__menu {
         width: 90%;

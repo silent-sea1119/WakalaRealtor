@@ -29,7 +29,12 @@
     &_label {
         &_1 {
             font-family: $font-primary;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
+            @include text_type_1;
+        }
+        &_2 {
+            font-family: $font-primary;
+            font-size: 1.6rem;
             @include text_type_1;
         }
     }
@@ -87,7 +92,7 @@
         }
         &_ta {
             font-family: $font-primary;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             padding: 1rem;
         }
     }
@@ -115,7 +120,7 @@
     &_table {
         &_h1 {
             font-family: $font-primary;
-            font-size: 1.6rem;
+            font-size: 1.2rem;
             @include text_type_1;
         }
     }

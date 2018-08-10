@@ -13,8 +13,10 @@
 @import "components/ddisplay";
 @import "components/ck";
 @import "components/progressBar/primary";
-//@import "components/admin/errorPopup-right";
+@import "components/admin/errorPopup-right";
 @import "components/admin/popup";
+@import "components/fine-uploader-gallery";
+@import "components/tagInput";
 #section_1 {
     width: 85%;
     float: right;
@@ -29,33 +31,12 @@
     margin-top: 10vh;
 }
 
-#insAdminSideBarMenu {
+#adminSideBarMenu {
     position: fixed;
     height: 90%;
     width: 15%;
     z-index: 60;
     background-color: $color-grey-dark;
-}
-
-.insLogo {
-    width: 100%;
-    height: auto;
-    position: relative;
-    margin: 5rem 0;
-    &__con {
-        max-height: 12rem;
-        max-width: 12rem;
-        min-height: 6rem;
-        min-width: 6rem;
-        background-color: $color-primary-white;
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 1.5rem auto 0 auto;
-        img {
-            width: 100%;
-            height: auto;
-        }
-    }
 }
 
 #content {

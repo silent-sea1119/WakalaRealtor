@@ -1,0 +1,18 @@
+{% extends "layouts/admin.html" %}
+
+{%  block title %}Posts{% endblock   %}
+
+{%  block scripts %}
+    {{stylesheet_tag('admin_posts_css') | safe}}
+
+{%  endblock    %}
+
+{%  block body  %}
+
+    <div id="section_1">
+        <div id="postsViewComponent"></div>
+    </div>
+
+    {{javascript_tag('admin_posts_js')  |   safe}}
+
+{% endblock %}

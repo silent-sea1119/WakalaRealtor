@@ -1,0 +1,23 @@
+{% extends "layouts/admin.html" %} 
+
+{% block title %}Add an Article{% endblock %}
+
+{% block styles %}
+
+{{stylesheet_tag('admin_addArticle_css')| safe}}
+
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %} 
+
+
+{% block body %}
+
+<div id="section_1">
+    <div id="addArticleComponent"></div>
+</div>
+
+{{javascript_tag('admin_addArticle_js') | safe}} 
+
+{% endblock %}

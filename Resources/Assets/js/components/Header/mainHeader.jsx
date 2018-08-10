@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import webUrl from '../../abstract/variables';
+import { webUrl, setSVGIcons} from '../../abstract/variables';
 import MenuType1 from '../UI/menuType1';
 
 class MainHeader extends Component {
@@ -16,6 +16,7 @@ class MainHeader extends Component {
     }
 
     componentDidMount() {
+        document.getElementById('svg_icons').innerHTML = setSVGIcons();
         window.addEventListener('scroll', this.handleScroll);
     }
 
@@ -27,7 +28,7 @@ class MainHeader extends Component {
         var offset = 2;
         var state = this.state;
 
-        var scrollYpos = $(document).scrollTop();
+        var scrollYpos = window.scrollY;
 
         if (scrollYpos > offset && state.toggleHeader == 0) {
             state.toggleHeader = 1;
@@ -43,7 +44,7 @@ class MainHeader extends Component {
 
     togglePopupMenu(menu) {
         var state = this.state;
-        state.togglePopupMenu == menu ? state.togglePopupMenu = 0 : state.togglePopupMenu = menu;
+        state.togglePopupMenu = state.togglePopupMenu == menu ? 0 : menu;
         this.setState(state);
     }
 
@@ -71,7 +72,7 @@ class MainHeader extends Component {
                     <div className="header__left">
                         <a href={webUrl}>
                             <div className="header__logo">
-                                <img src={webUrl + 'assets/images/edulink.png'} />
+                                <img src={webUrl + 'assets/images/logo2.png'} />
                             </div>
                         </a>
                         <div className="header__title f_banner_1">Edulink</div>
@@ -82,18 +83,6 @@ class MainHeader extends Component {
                             <svg className="icon">
                                 <use xlinkHref="#menu" />
                             </svg>
-                        </div>
-
-                        <div className="header__signin">
-                            <a href={webUrl + 'login'}>
-                                <div className="btn_1 f_button_2 t-10 f_text-capitalize"></div>
-                            </a>
-                        </div>
-
-                        <div className="header__signup">
-                            <a href={webUrl + 'sign_up'}>
-                                <div className="btn_1 f_button_2 t-55 f_text-capitalize"></div>
-                            </a>
                         </div>
 
                         <div className="header__right__text f_normal f_text-capitalize t-56"></div>

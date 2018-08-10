@@ -1,0 +1,288 @@
+.commentSection {
+  width: 100%;
+  float: left;
+  padding: 2rem 0; }
+  .commentSection__title {
+    color: #171717;
+    width: 80%;
+    height: 5rem; }
+
+.comment {
+  width: 100%;
+  height: auto;
+  padding: 3rem 5%;
+  float: left; }
+  .comment__user {
+    float: left; }
+    .comment__user__pic {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      float: left; }
+      .comment__user__pic img {
+        width: 100%;
+        height: auto; }
+  .comment__right {
+    float: left;
+    padding-left: 2rem;
+    width: 90%; }
+    .comment__right__top {
+      float: left; }
+      .comment__right__top__name {
+        float: left;
+        color: #171717;
+        padding: .5rem 2rem .5rem 0;
+        text-indent: 0; }
+      .comment__right__top__time {
+        height: auto;
+        color: #14a1ff;
+        padding: .8rem 0;
+        float: left; }
+  .comment__bottom {
+    width: 100%;
+    height: auto;
+    float: left; }
+  .comment__stats {
+    float: right; }
+    .comment__stats__comment, .comment__stats__likes {
+      color: #14a1ff;
+      min-width: 5%;
+      float: right;
+      height: 3rem;
+      margin: 0 .5rem; }
+    .comment__stats__values {
+      padding: .5rem;
+      color: #171717;
+      float: right; }
+    .comment__stats__icon {
+      width: 3rem;
+      height: 3rem;
+      padding: .5rem;
+      overflow: hidden;
+      float: left; }
+  .comment__buttons {
+    float: left; }
+    .comment__buttons__button {
+      width: 10rem;
+      height: 3rem;
+      float: left; }
+  .comment__text {
+    width: 100%;
+    color: #171717;
+    min-height: 5rem;
+    float: left; }
+
+.commentInput {
+  float: left;
+  width: 100%; }
+  .commentInput__form {
+    width: 100%;
+    min-height: 15rem;
+    margin-bottom: 5rem;
+    float: left;
+    border-bottom: solid 0.2rem #CCC;
+    padding: 1rem 0; }
+  .commentInput__user {
+    width: 15%;
+    float: left; }
+    .commentInput__user__pic {
+      width: 6rem;
+      height: 6rem;
+      margin: 0 auto;
+      border-radius: 50%;
+      overflow: hidden; }
+      .commentInput__user__pic img {
+        width: 100%;
+        height: 100%; }
+    .commentInput__user__details {
+      width: 85%;
+      float: left;
+      margin-bottom: 3rem; }
+    .commentInput__user__name, .commentInput__user__email {
+      width: 50%;
+      float: left;
+      padding-right: 3rem; }
+  .commentInput__box {
+    width: 85%;
+    height: 10rem;
+    float: left; }
+    .commentInput__box textarea {
+      width: 100%;
+      height: 100%;
+      padding: 1rem; }
+  .commentInput__sendBtn {
+    height: 5rem;
+    float: right;
+    margin: 1rem 0;
+    padding: 0; }
+    .commentInput__sendBtn button {
+      background-color: transparent; }
+  .commentInput__loginRequest {
+    color: #171717;
+    padding: 1rem;
+    float: left;
+    max-width: 70%; }
+  .commentInput__btn {
+    height: 5rem;
+    float: left; }
+
+.pageTop {
+  height: 50vh;
+  width: 100%;
+  overflow: hidden; }
+  .pageTop__background {
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    position: absolute;
+    z-index: 0; }
+    .pageTop__background img {
+      width: 120%;
+      height: auto;
+      margin-left: -2rem; }
+  .pageTop__foreground {
+    width: 40%;
+    height: 25rem;
+    margin: 15vh 30%;
+    position: absolute;
+    z-index: 0; }
+
+.section {
+  width: 100%;
+  position: relative;
+  float: left;
+  clear: both; }
+  .section__1, .section__2, .section__3 {
+    background-color: #FFF; }
+  .section__1, .section__3 {
+    width: 25%;
+    position: absolute; }
+    .section__1, .section__1--float, .section__3, .section__3--float {
+      min-height: 20rem;
+      height: auto;
+      float: left;
+      padding: 0; }
+    .section__1--float, .section__3--float {
+      position: fixed;
+      margin-top: -40rem; }
+    @media (max-width: 37.5em) {
+      .section__1, .section__3 {
+        display: none; } }
+  .section__2 {
+    width: 50%;
+    margin: -2.5rem 25% 0 25%;
+    padding: 0 5%;
+    background-color: #FFF;
+    min-height: 60rem;
+    position: relative;
+    float: left; }
+    @media (max-width: 37.5em) {
+      .section__2 {
+        width: 90%;
+        margin: -2.5rem 5% 0 5%; } }
+  .section__3 {
+    margin-left: 75%; }
+
+.navigation {
+  width: 100%;
+  float: left;
+  height: 5rem;
+  overflow: hidden;
+  margin-bottom: 2rem; }
+  .navigation__home {
+    float: left; }
+  .navigation__category {
+    min-width: 10%;
+    float: left;
+    padding: 1.5rem 2rem;
+    color: #171717;
+    cursor: pointer; }
+  .navigation__program {
+    min-width: 10%;
+    float: left;
+    padding: 1.5rem 2rem;
+    color: #00a84f;
+    cursor: pointer; }
+  .navigation__stat {
+    float: right;
+    height: 4rem;
+    padding: 1rem 0; }
+    .navigation__stat__view, .navigation__stat__likes, .navigation__stat__com {
+      height: 3rem;
+      float: left; }
+    .navigation__stat__icon {
+      width: 3rem;
+      height: 3rem;
+      padding: .5rem 0;
+      overflow: hidden;
+      float: left; }
+    .navigation__stat__value {
+      float: right;
+      padding: 0 1rem;
+      line-height: 3rem;
+      color: #14a1ff; }
+  .navigation__buttons {
+    float: right;
+    padding: 1rem 0; }
+    .navigation__buttons__button {
+      width: 10rem;
+      height: 3rem;
+      float: right; }
+
+.article {
+  width: 100%;
+  overflow: hidden;
+  float: left;
+  margin-bottom: 5rem; }
+  .article__image {
+    width: 100%;
+    height: 30rem;
+    float: left; }
+  .article__content {
+    width: 100%;
+    float: left; }
+  .article__primary {
+    float: left;
+    margin-bottom: 2rem;
+    width: 100%; }
+  .article__title {
+    width: 100%;
+    padding: 1.2rem 0;
+    float: left;
+    color: #0f4fff; }
+  .article__author {
+    line-height: 4rem;
+    float: left; }
+  .article__time {
+    line-height: 4rem;
+    margin-left: 2rem;
+    float: left;
+    color: #0f4fff; }
+  .article__text {
+    margin-bottom: 5rem;
+    float: left;
+    min-height: 10rem;
+    width: 100%; }
+    .article__text__title {
+      padding: 1.2rem 3rem;
+      margin-bottom: 3rem;
+      float: left;
+      color: #171717;
+      width: 100%;
+      border-left: solid 0.5rem #0f4fff; }
+  .article__commentSection {
+    width: 100%;
+    float: left; }
+  .article__tags {
+    width: 100%;
+    float: left;
+    padding: 2rem 0; }
+  .article__tag {
+    background-color: #0f4fff;
+    float: left;
+    margin-right: 2rem;
+    cursor: pointer;
+    padding: 0 1rem;
+    line-height: 4rem;
+    color: #FFF; }
+

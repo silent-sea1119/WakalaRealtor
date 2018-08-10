@@ -1,0 +1,67 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+
+.ePP {
+    position: fixed;
+    z-index: 9999;
+    bottom: 1rem;
+    right: 3rem;
+    min-width: 20%;
+    max-width:35%;
+    @include respond(tab-port) {
+        width: 35%;
+    }
+    @include respond(tab-land) {
+        width: 45%;
+    }
+    @include respond(phone) {
+        width: 65%;
+    }
+    &__error {
+        &--disabled,
+        &--active {
+            float: right;
+            margin: 1rem 0;
+            width: 100%;
+            overflow: hidden;
+            @include transition-type-3;
+        }
+        &--active {
+            opacity: 1;
+            box-shadow: $box-shadow-light;
+            border-radius: .2rem;
+            visibility: visible;
+            position: relative;
+        }
+        &--disabled {
+            opacity: 0;
+            position: absolute;
+            bottom: 0;
+            visibility: hidden;
+        }
+        &__icon {
+            width: 8rem;
+            height: 10rem;
+            position: absolute;
+            z-index: 500;
+            left: 0;
+            background-color: $color-error-primary;
+            .icon {
+                width: 4rem;
+                height: 4rem;
+                margin: 3rem 2rem;
+                float: left;
+                fill: $color-primary-white;
+            }
+        }
+        &__content {
+            color: $color-grey-dark;
+            background-color: $color-primary-white;
+            float: left;
+            width: 100%;
+            min-height: 10rem;
+            padding: 1rem 2rem 1rem 9rem;
+            overflow: hidden;
+        }
+    }
+}

@@ -2,33 +2,48 @@
 @import "../abstracts/mixins";
 
 .ck {
+    .cke_contents_ltr blockquote {
+        padding-left: 20px;
+        padding-right: 8px;
+        border-left-width: 5px;
+    }
+
+    .cke_contents_rtl blockquote {
+        padding-left: 8px;
+        padding-right: 20px;
+        border-right-width: 5px;
+    }
+    .cke_editable {
+        font-size: 13px;
+        line-height: 1.6;
+        /* Fix for missing scrollbars with RTL texts. (#10488) */
+        word-wrap: break-word;
+    }
+    &,
     &--1 {
-        .cke_editable {
-            font-size: 13px;
-            line-height: 1.6;
-            /* Fix for missing scrollbars with RTL texts. (#10488) */
-            word-wrap: break-word;
-        }
         blockquote {
             font-style: italic;
             font-family: Georgia, Times, "Times New Roman", serif;
-            padding: 2px 0;
-            border-style: solid;
-            border-color: #ccc;
-            border-width: 0;
-        }
-        .cke_contents_ltr blockquote {
-            padding-left: 20px;
-            padding-right: 8px;
-            border-left-width: 5px;
-        }
-        .cke_contents_rtl blockquote {
-            padding-left: 8px;
-            padding-right: 20px;
-            border-right-width: 5px;
+            padding: .2rem 1.5rem;
+            border-left:solid .5rem #ccc;
+            width:94%;
+            margin:0 3%;
         }
         a {
-            color: #0782c1;
+            &,
+            &:hover,
+            &:focus{
+                color:#FFF;
+                padding: .2rem .5rem;
+                margin: 0 .5rem;
+            }
+            &:hover{
+                background-color:#0782c1;
+            }
+            &,
+            &:focus{
+                background-color:#0254be;
+            }
         }
         ol,
         ul,
@@ -47,28 +62,35 @@
             font-weight: normal;
             line-height: 1.2;
         }
-        h1 {
+        h2 {
             font-family: $font-primary;
-            font-size: 2rem;
+            font-size: 2.4rem;
             text-align: left;
             border-left: solid .5rem $color-edulink-primary;
             padding: 1rem 2rem;
             margin-bottom: 2rem;
         }
-        h2 {
-            font-family: $font-primary;
-            font-size: 1.8rem;
-            text-align: left;
-        }
         h3 {
             font-family: $font-primary;
-            font-size: 1.6rem;
+            font-size: 2.2rem;
+            text-align: left;
+        }
+        h4 {
+            font-family: $font-primary;
+            font-size: 2rem;
             text-align: left;
         }
         p {
             font-family: $font-primary;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             text-align: left;
+            line-height: 2.6rem;
+        }
+        li {
+            font-family: $font-primary;
+            font-size: 1.6rem;
+            text-align: left;
+            line-height: 2.2rem;
         }
         hr {
             border: 0;
