@@ -4,6 +4,14 @@ class IconButton extends Component {
     constructor(props){
         super(props);
 
+        /*
+            Config = {
+                icon:"Text",
+                class:"btn_1",
+                action:this.function
+            }
+        */
+
         this.state = {
             status:this.props.status
         }
@@ -11,7 +19,7 @@ class IconButton extends Component {
 
     componentDidMount(){
         var state = this.props.parent.state;
-        state.buttons.push(this);
+        state.iconButtons.push(this);
         this.setState(state);
     }
 
@@ -38,6 +46,7 @@ class IconButton extends Component {
             case 3: { status = "loading"; break; }
             case 4: { status = "warning"; break; }
             case 5: { status = "danger"; break; }
+            case 6: { status = "success"; break; }
         }
 
         const classValue = config.class + "--" + status;

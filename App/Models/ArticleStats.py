@@ -6,8 +6,10 @@ class ArticleStatsModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     articleId = db.Column(db.Integer,db.ForeignKey('articles.id'))
-    user = db.Column(db.String(60))
+    userId = db.Column(db.Integer, db.ForeignKey('users.id'))
     reaction = db.Column(db.Integer)
+    seen = db.Column(db.Boolean)
+    reactionSeen = db.Column(db.Boolean)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow())
 
     #Reaction
@@ -15,30 +17,41 @@ class ArticleStatsModel(db.Model):
     #2 - Disliked
 
     article = db.relationship('ArticleModel')
+    user = db.relationship('UserModel')
 
-    def __init__(self, articleId, user):
+    def __init__(self, articleId, userId):
         self.articleId = articleId
-        self.user = user
+        self.userId = userId
         self.reaction = 0
+        self.seen = False
+        self.reactionSeen = False
+
 
     def json(self):
-        return {"id": self.id, "reaction" : self.reaction}
+        return {
+            "id": self.id,
+            "user": self.userId,
+            "reaction" : self.reaction,
+            "seen": self.seen,
+            "reactionSeen": self.reactionSeen
+            }
+
+
+    @classmethod
+    def find(cls,pid, userid):
+        return cls.query.filter_by(articleId=pid, userId=userid).first()
 
 
     @classmethod
     def find_by_id(cls,_id):
-        return cls.query.filter(id=_id).first()
-
-
-    @classmethod
-    def find_by_user(cls,user,articleId):
-        return cls.query.filter(user=user, articleId=articleId).first()
+        return cls.query.get(_id)
 
 
     @classmethod
     def check_if_user_has_seen(cls,user,articleId):
         stat = cls.query.filter(user=user, articleId=articleId).first()
         return  bool(stat)
+
 
     @classmethod
     def delete_all_article_stats(cls,articleId):

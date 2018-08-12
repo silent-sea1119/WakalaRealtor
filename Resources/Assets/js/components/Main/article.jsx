@@ -5,17 +5,22 @@ import ErrorPopup from "../UI/errorPopup";
 import moment from "moment";
 import axios from "axios";
 import StickyBox from 'react-sticky-content';
+import ButtonWithIcon from './UI/buttonWithIcon';
 
 class Article extends Component {
     constructor(props){
         super(props);
 
         this.state = {
-            user:{},
+            userId:"",
             coverPhotoUrl:'',
-            liked:false,
-            likes:0,
+            reaction:0,
+            stat:{
+                likes:0,
+                dislikes:0
+            },
             errorPopup:{},
+            buttons:[],
             article:{
                 id:document.getElementById("articleComponent").dataset.article,
                 data:{},
@@ -24,59 +29,22 @@ class Article extends Component {
             ajax:{
                 retrieveProfileData:{
                         attempts:0,
-                        error:""
                 },
                 getArticle: {
-                    attempts: 0,
-                    error: ""
+                    attempts: 0
                 }
-            },
-            scrollFixPoint:[
-                {
-                    offset:0,
-                    state:0
-                }
-            ]
+            }
         };
 
         this.reloadAjaxRequest = this.reloadAjaxRequest.bind(this);
-        this.handleScroll = this.handleScroll.bind(this);
-        this.setScrollOffset = this.setScrollOffset.bind(this);
         this.setCoverPhoto = this.setCoverPhoto.bind(this);
-        this.likeArticle = this.likeArticle.bind(this);
+        this.reactToArticle = this.reactToArticle.bind(this);
         this.getArticle = this.getArticle.bind(this);
+        this.checkReaction = this.checkReaction.bind(this);
     }
 
     componentDidMount() {
         this.getArticle();
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleScroll);
-    }
-
-    setScrollOffset(){
-        var state = this.state;
-        var headerheight = $(".header").height();
-        state.scrollFixPoint.offset = $("#section_1").offset().top - headerheight;
-        this.setState(state);
-    }
-
-    handleScroll(e) {
-        var state = this.state;
-        var offset = state.scrollFixPoint[0].offset;
-
-        var scrollYpos = $(document).scrollTop();
-
-        if (scrollYpos > offset && state.scrollFixPoint[0] == 0) {
-            state.scrollFixPoint[0] = 1;
-            this.setState(state);
-        }
-        else if (scrollYpos < offset && state.scrollFixPoint[0] == 1) {
-            state.scrollFixPoint[0] = 0;
-            this.setState(state);
-        }
-
     }
 
     reloadAjaxRequest(option) {
@@ -92,6 +60,7 @@ class Article extends Component {
                 }
                 else {
                     state.errorPopup.displayError("Access to server failed. Try again Later! ");
+                    state.ajax.retrieveProfileData.attempts = 0;
                     this.setState(state);
                 }
                 break;
@@ -105,6 +74,7 @@ class Article extends Component {
                 }
                 else {
                     state.errorPopup.displayError("Access to server failed. Try again Later! ");
+                    state.ajax.getArticle.attempts = 0;
                     this.setState(state);
                 }
                 break;
@@ -116,9 +86,7 @@ class Article extends Component {
     setCoverPhoto(){
         var state = this.state;
         var article = state.article.data.post;
-
         state.coverPhotoUrl = article.image != undefined ? webUrl + 'repo/' + article.image.name + "." + article.image.type : defaultArticleCoverPic;
-
         this.setState(state);
     }
 
@@ -152,12 +120,11 @@ class Article extends Component {
 
     }
 
-    likeArticle() {
+    reactToArticle(reaction = 1) {
         var component = this;
         var state = component.state;
-        var url = webUrl + "likeArticle/" + this.state.article.data.post.id;
-
-        state.liked == false ? url += "/true" : url += "/false";
+        var url = webUrl + "articleReaction/" + this.state.article.data.post.id + "/" ;
+        url+= state.reaction == reaction ? 0 : reaction;
 
         axios({
             url:url,
@@ -167,31 +134,84 @@ class Article extends Component {
 
             switch (data.error) {
                 case 0: {
-                    if (state.liked) {
-                        state.liked = false;
-                        state.likes -= 1;
+                    var ind = state.article.stats.findIndex((item) => {
+                        return item.user == state.userId;
+                    })
+
+                    if (ind < 0){
+                        state.article.stats[ind].reaction = state.reaction == reaction ? 0 : reaction;
                     }
-                    else {
-                        state.liked = true;
-                        state.likes += 1;
+
+                    switch (state.reaction) {
+                        case 0: {
+                            switch (reaction) {
+                                case 1: {
+                                    state.stats.likes++;
+                                    break;
+                                }
+                                case 2: {
+                                    state.stats.dislikes++;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        case 1: {
+                            switch (reaction) {
+                                case 2: {
+                                    state.stats.likes--;
+                                    state.stats.dislikes++;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                        case 2: {
+                            switch (reaction) {
+                                case 1: {
+                                    state.stats.dislikes--;
+                                    state.stats.likes++;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
                     }
 
                     component.setState(state);
+                    component.checkReaction();
                     break;
                 }
-                case 1: {
-                    window.location.href = webUrl + "login";
-                    break;
+                default:{
+                    component.state.errorPopup.displayError('We received an error message. Please try again later!');
                 }
             }
 
         }).catch((response)=>{
             if(resposne.status != 200){
-                component.state.errorPopup.displayError('Error accessing server. Please try again later');
+                component.state.errorPopup.displayError('Error accessing server. Please try again later!');
             }
         })
     }
 
+
+    checkReaction() {
+        var article = this.state.article.data.post;
+        var state = this.state;
+
+        var reaction = article.stats.find((item) => {
+            return item.user == state.userId;
+        })
+
+        state.reaction = reaction == undefined ? 0 : reaction.reaction;
+
+        state.buttons[0].state.status = state.reaction == 2 ? 5 : 0;
+        state.buttons[0].state.label = state.reaction == 2 ? "Disliked" : "Dislike";
+        state.buttons[1].state.status = state.reaction == 1 ? 6 : 0;
+        state.buttons[1].state.label = state.reaction == 2 ? "Liked" : "Like";
+
+        this.setState(state);
+    }
 
     render() {
         var article = this.state.article.data.post;
@@ -201,14 +221,6 @@ class Article extends Component {
             backgroundImage: "url('" + this.state.coverPhotoUrl + "')",
             backgroundSize:'cover',
             backgroundPosition:'center'
-        }
-
-        var section1Class = "section__1";
-        var section3Class = "section__3";
-
-        if(this.state.scrollFixPoint[0].state == 1){
-            section1Class += "--float";
-            section3Class += "--float";
         }
 
         var time = moment(this.state.article.data.log.created_at,"YYYY-MM-DD HH:mm:ss").utc(3).local();
@@ -226,34 +238,32 @@ class Article extends Component {
                 <div className="section">
 
                     <StickyBox >
-                        <div id="section_1" className={section1Class}>
-                            {/* <MiniProfileView user={this.state.profile.institution} userType={3} currentUser={this.state.user} />  */}
-                        </div>
+                        <div className="section__1"></div>
                     </StickyBox>
                     
                     <StickyBox >
                         
                         <div className="section__2">
                             <div className="navigation">
-                                {/* <div className="navigation__home">
-                                <a href={webUrl + this.state.insID}>
-                                    <div className="btnIcon_1">
-                                        <div className="btnIcon_1__icon">
-                                            <svg className="icon">
-                                                <use xlinkHref="#home" />
-                                            </svg>
+                                <div className="navigation__home">
+                                    <a href={webUrl}>
+                                        <div className="btnIcon_1">
+                                            <div className="btnIcon_1__icon">
+                                                <svg className="icon">
+                                                    <use xlinkHref="#home" />
+                                                </svg>
+                                            </div>
+                                            <div className="btnIcon_1__label f_normal f_text-center">Home</div>
                                         </div>
-                                        <div className="btnIcon_1__label f_normal t-6 f_text-center f_text-capitalize"></div>
-                                    </div>
-                                </a>
-                            </div> */}
+                                    </a>
+                                </div>
 
 
 
                                 <div className="navigation__stat">
                                     <div className="navigation__stat__view">
                                         <div className="navigation__stat__icon">
-                                            <div className="btn_icon--normal">
+                                            <div className="iconBtn--normal">
                                                 <svg className="icon">
                                                     <use xlinkHref="#view" />
                                                 </svg>
@@ -264,7 +274,7 @@ class Article extends Component {
 
                                     <div className="navigation__stat__likes">
                                         <div className="navigation__stat__icon">
-                                            <div className="btn_icon--normal">
+                                            <div className="iconBtn--normal">
                                                 <svg className="icon">
                                                     <use xlinkHref="#like" />
                                                 </svg>
@@ -275,7 +285,7 @@ class Article extends Component {
 
                                     <div className="navigation__stat__com">
                                         <div className="navigation__stat__icon">
-                                            <div className="btn_icon--normal">
+                                            <div className="iconBtn--normal">
                                                 <svg className="icon">
                                                     <use xlinkHref="#communication" />
                                                 </svg>
@@ -288,16 +298,29 @@ class Article extends Component {
 
                                 <div className="navigation__buttons">
                                     <div className="navigation__buttons__button">
-                                        <div className={this.state.liked == true ? "btnIcon_2--success" : "btnIcon_2"} onClick={() => { this.likeArticle() }}>
-                                            <div className="btnIcon_2__icon">
-                                                <svg className="icon">
-                                                    <use xlinkHref="#like" />
-                                                </svg>
-                                            </div>
-                                            <div className="btnIcon_2__label f_normal">{this.state.liked == true ? "Liked" : "Like"}</div>
-                                        </div>
+                                        <ButtonWithIcon
+                                            parent={this}
+                                            status={ this.state.reaction == 2 ? 5 : 0}
+                                            config={{
+                                                class: "btnIcon_2",
+                                                action: () => { this.reactToArticle(1)},
+                                                label: this.state.reaction == 2 ? "Disliked" : "Dislike",
+                                                icon: "dislike"
+                                            }}
+                                        />
                                     </div>
-
+                                    <div className="navigation__buttons__button">
+                                        <ButtonWithIcon 
+                                            parent={this}
+                                            status={this.state.reaction == 1 ? 6 : 0}
+                                            config={{
+                                                class:"btnIcon_2",
+                                                action: () => { this.reactToArticle(1) },
+                                                label: this.state.reaction == 1 ? "Liked" : "Like",
+                                                icon:"like"
+                                            }}
+                                        />
+                                    </div>
                                 </div>
 
                             </div>
@@ -339,8 +362,7 @@ class Article extends Component {
                     
 
                     <StickyBox >
-                        <div className={section3Class}>
-                        </div>
+                        <div className="section__3"></div>
                     </StickyBox>
                     
                 </div>  

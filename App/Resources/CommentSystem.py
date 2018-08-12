@@ -2,6 +2,7 @@ from flask_restful import Resource, reqparse
 from App.Models.Post import PostModel
 from App.Models.ArticleComment import ArticleCommentModel
 from App.Models.User import UserModel
+from App.Models.Article import ArticleModel
 from flask import request
 
 class Comment(Resource):
@@ -52,6 +53,11 @@ class Comment(Resource):
             if int(param) == 1:
                 comment = ArticleCommentModel(post.postId, data.name, data.email,data.comment)
                 comment.save()
+
+                article = ArticleModel.find_by_id(post.postId)
+                article.comments += 1
+                article.save()
+
                 return {"error": 0}
             else :
                 return {"error":2}            

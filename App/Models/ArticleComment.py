@@ -51,9 +51,7 @@ class ArticleCommentModel(db.Model):
         comments = cls.query.filter_by(articleId=id).order_by(
             cls.created_at).offset(offset).limit(30).all()
 
-        print(comments)
         cstats = ArticleCommentStatModel.find_by_comments([x.id for x in comments])
-        print(cstats)
 
         for c in comments:
             c.stats = []

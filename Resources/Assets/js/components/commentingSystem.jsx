@@ -6,6 +6,7 @@ import ErrorPopup from './UI/errorPopup';
 import axios from 'axios';
 import MultiLineTextInput from './UI/MultiLineTextInput';
 import TextInput from './UI/textInput';
+import IconButton from './UI/iconButton';
 
 class CommentingSystem extends Component {
     constructor(props){
@@ -360,7 +361,8 @@ class Comment extends Component {
 
         this.state = {
             reaction:0,
-            stats: stats
+            stats: stats,
+            iconButtons:[]
         }
 
         this.checkIfLiked = this.checkIfLiked.bind(this);
@@ -379,9 +381,8 @@ class Comment extends Component {
         //1 - Like
         //2 - Dislike
 
-        if(state.reaction == reaction){ return; }
-
-        var url = webUrl + "commentReaction/" +  this.props.main.props.commentingOn +"/"+ this.props.comment.id + "/" + reaction;
+        var url = webUrl + "commentReaction/" +  this.props.main.props.commentingOn +"/"+ this.props.comment.id + "/";
+        url += state.reaction == reaction ? 0 : reaction;
 
         axios({
             url:url,
@@ -450,13 +451,15 @@ class Comment extends Component {
             return item.user == userId;
         })
 
-        console.log(userId);
-        console.log(state);
-        console.log(reaction);
-
         state.reaction = reaction == undefined ? 0 : reaction.reaction;
+
+
+        state.iconButtons[0].state.status = state.reaction == 2 ? 5 : 0;
+        state.iconButtons[1].state.status = state.reaction == 1 ? 6 : 0;
+
         this.setState(state);
     }
+
 
     render() {
         var comment = this.props.comment;
@@ -480,40 +483,19 @@ class Comment extends Component {
                     <div className="comment__text f_normal">{comment.comment}</div>
 
                     <div className="comment__bottom">
-                        <div className="comment__buttons">
-                            <div className="comment__buttons__button">
-                                <div className={reaction == 1 ? "btnIcon_2--success" : "btnIcon_2"} onClick={()=>{this.reactToComment(1)}}>
-                                    <div className="btnIcon_2__icon">
-                                        <svg className="icon">
-                                            <use xlinkHref="#like" />
-                                        </svg>
-                                    </div>
-                                    <div className="btnIcon_2__label f_normal">{reaction == 1 ? "Liked" : "Like"}</div>
-                                </div>
-                            </div>
-
-                            <div className="comment__buttons__button">
-                                <div className={reaction == 2 ? "btnIcon_2--success" : "btnIcon_2"} onClick={() => { this.reactToComment(2) }}>
-                                    <div className="btnIcon_2__icon">
-                                        <svg className="icon">
-                                            <use xlinkHref="#like" />
-                                        </svg>
-                                    </div>
-                                    <div className="btnIcon_2__label f_normal">{reaction == 2? "Disliked" : "Dislike"}</div>
-                                </div>
-                            </div>
-
-                        </div>
-
                         <div className="comment__stats">
 
                             <div className="comment__stats__likes">
                                 <div className="comment__stats__icon">
-                                    <div className="btn_icon--normal">
-                                        <svg className="icon">
-                                            <use xlinkHref="#like" />
-                                        </svg>
-                                    </div>
+                                    <IconButton 
+                                        parent={this}
+                                        status={reaction == 2 ? 5 : 0}
+                                        config={{
+                                            icon: "dislike",
+                                            class: "iconBtn",
+                                            action: () => { this.reactToComment(1)}
+                                        }}
+                                    />
                                 </div>
                                 <div className="comment__stats__values f_normal">{this.state.stats.dislikes}</div>
                             </div>
@@ -521,11 +503,15 @@ class Comment extends Component {
 
                             <div className="comment__stats__likes">
                                 <div className="comment__stats__icon">
-                                    <div className="btn_icon--normal">
-                                        <svg className="icon">
-                                            <use xlinkHref="#like" />
-                                        </svg>
-                                    </div>
+                                    <IconButton
+                                        parent={this}
+                                        status={reaction == 1 ? 6 : 0}
+                                        config={{
+                                            icon: "like",
+                                            class: "iconBtn",
+                                            action: () => { this.reactToComment(2)}
+                                        }}
+                                    />
                                 </div>
                                 <div className="comment__stats__values f_normal">{this.state.stats.likes}</div>
                             </div>

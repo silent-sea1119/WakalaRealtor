@@ -4,6 +4,8 @@ from App.Models.ArticleTag import ArticleTagModel
 from App.Models.Post import PostModel
 from App.Models.RepoFile import RepoFileModel
 from App.Models.Post import PostModel
+
+from flask import request
 import json
 
 class AdminArticle(Resource):
@@ -42,7 +44,7 @@ class AdminArticle(Resource):
             post = p.get_post()
             x['post'] = post.json()
             x['post']['tags'] = post.get_tags()
-            
+
             return {"error":0,"content":x}
         else :
             return {"error": 1 }

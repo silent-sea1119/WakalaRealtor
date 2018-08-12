@@ -83,9 +83,16 @@ def index():
 def articlePage(param):
     return mc.articlePage(param)
 
+
 @app.route('/getArticle/<string:param>')
 def getArticle(param):
     return jsonify(mc.getArticle(param))
+
+
+@app.route('/articleReaction/<string:param>/<string:param2>')
+def articleReaction(param):
+    return jsonify(mc.articleReaction(param))
+
 
 
 @app.route("/admin/login")
