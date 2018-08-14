@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 80);
+/******/ 	return __webpack_require__(__webpack_require__.s = 79);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2127,7 +2127,7 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 
 /***/ }),
 
-/***/ 80:
+/***/ 79:
 /*!*********************************************************!*\
   !*** multi ./Resources/Assets/js/pages/admin/posts.jsx ***!
   \*********************************************************/

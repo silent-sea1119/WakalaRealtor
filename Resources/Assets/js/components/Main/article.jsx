@@ -5,7 +5,7 @@ import ErrorPopup from "../UI/errorPopup";
 import moment from "moment";
 import axios from "axios";
 import StickyBox from 'react-sticky-content';
-import ButtonWithIcon from './UI/buttonWithIcon';
+import ButtonWithIcon from '../UI/buttonWithIcon';
 
 class Article extends Component {
     constructor(props){

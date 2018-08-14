@@ -1,45 +1,39 @@
+from os import path
+
 import pkg_resources
-from db import db
 
-from os import environ, path
-from flask import Flask, render_template, send_from_directory,jsonify,redirect,url_for
-from flask_webpack import Webpack
-from flask_restful import Api
-from flask_jwt_extended import JWTManager,jwt_required,get_jwt_identity,create_access_token,jwt_refresh_token_required,set_access_cookies
-
-from App.Controllers.Controllers import AdminController,MainController
-from App.Resources.Resources import AdminUser, RepoFolder, UploadAPI, Tag, RepoFile, Tags, Post, AdminArticle,Comment,CommentReaction
+from App.Controllers.Controllers import AdminController, MainController
 from App.Models.RevokedToken import RevokedTokenModel
+from App.Resources.Resources import (AdminArticle, AdminUser, Comment,
+                                     CommentReaction, Post, RepoFile,
+                                     RepoFolder, Tag, Tags, UploadAPI)
+
+from db import db
+from flask import (Flask, jsonify, redirect, render_template,
+                   send_from_directory, url_for)
+from flask_jwt_extended import (JWTManager, create_access_token,
+                                get_jwt_identity, jwt_refresh_token_required,
+                                jwt_required, set_access_cookies)
+from flask_restful import Api
+from flask_webpack import Webpack
 
 #   __version__ = pkg_resources.require("AngelaBlog")[0].version
 here = path.abspath(path.dirname('./'))
 template_dir = path.abspath('./Resources/Views/')
 
 app = Flask(__name__, template_folder=template_dir)
-debug = "DEBUG" in environ
+
+app.config.from_envvar('APP_SETTINGS')
+app.config.from_object("config.DevelopmentConfig")
 
 webpack = Webpack()
-app.config["WEBPACK_MANIFEST_PATH"] = path.join(here, "manifest.json")
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:m21c07s96@127.0.0.1/angelablog'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['PROPAGATE_EXCEPTIONS'] = True
-app.secret_key = b'\x0c$V\x92\x1b1\x05xp@\xfa\xdc\x94\x87\xc4\x0f'
-
 webpack.init_app(app)
+
 api = Api(app)
 db.init_app(app)
 
 ac = AdminController()
 mc = MainController()
-
-app.config['JWT_TOKEN_LOCATION'] = ['cookies']
-app.config['JWT_COOKIE_SECURE'] = True
-app.config['JWT_ACCESS_COOKIE_PATH'] = '/admin/'
-app.config['JWT_REFRESH_COOKIE_PATH'] = '/api/key2/'
-app.config['JWT_COOKIE_CSRF_PROTECT'] = False
-app.config['JWT_SECRET_KEY'] = b'\x0c$V\x92\x1b1\x05xp@\xfa\xdc\x94\x87\xc4\x0f'
-app.config['JWT_BLACKLIST_ENABLED'] = True
-app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
 
 jwt = JWTManager(app)
 
@@ -90,8 +84,8 @@ def getArticle(param):
 
 
 @app.route('/articleReaction/<string:param>/<string:param2>')
-def articleReaction(param):
-    return jsonify(mc.articleReaction(param))
+def articleReaction(param,param2):
+    return jsonify(mc.articleReaction(param,param2))
 
 
 
@@ -178,5 +172,4 @@ def setup():
 
 
 if __name__ == "__main__":
-    app.debug = debug
     app.run(extra_files=[app.config["WEBPACK_MANIFEST_PATH"]], port=5000)

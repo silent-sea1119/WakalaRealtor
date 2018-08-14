@@ -14,6 +14,10 @@ setup(
     include_package_data=True,
     install_requires=[
         "Flask>=1.0.2",
-        "Flask-Webpack>=0.0.7"
+        "Flask-Webpack>=0.0.7",
+        "Flask-JWT-Extended>=3.12.1",
+        "Flask-RESTful>=0.3.6",
+        "Flask-SQLAlchemy>=2.3.2",
+        "Pillow>=5.2.0"
     ]
 )

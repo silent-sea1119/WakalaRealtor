@@ -1,3 +1,8 @@
 ./node_modules/
 ./dist/
 ./AngelaBlog/
+config.py
+./Public/Assets
+!./Public/Assets/images
+!./Public/Assets/ckeditor
+app.py

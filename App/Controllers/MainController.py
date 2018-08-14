@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import render_template,request
 from App.Models.Post import PostModel
+from App.Models.Article import ArticleModel
 
 class MainController:
 
@@ -27,6 +28,7 @@ class MainController:
             return {"error":0,"content":x}
         else :
             return {"error": 1 }
+
 
     def articleReaction(self, param, param2):
         try:

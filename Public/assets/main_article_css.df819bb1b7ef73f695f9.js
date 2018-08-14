@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 66);
+/******/ 	return __webpack_require__(__webpack_require__.s = 65);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -130,7 +130,7 @@ eval("\n/**\n * When source maps are enabled, `style-loader` uses a link element
 
 /***/ }),
 
-/***/ 66:
+/***/ 65:
 /*!*************************************************************!*\
   !*** multi ./Resources/Assets/scss/pages/main/article.scss ***!
   \*************************************************************/

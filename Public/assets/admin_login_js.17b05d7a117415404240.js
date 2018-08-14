@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 74);
+/******/ 	return __webpack_require__(__webpack_require__.s = 73);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -707,7 +707,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
-/***/ 74:
+/***/ 73:
 /*!*********************************************************!*\
   !*** multi ./Resources/Assets/js/pages/admin/login.jsx ***!
   \*********************************************************/
