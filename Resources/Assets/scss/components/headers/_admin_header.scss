@@ -1,5 +1,4 @@
 @import "../../abstracts/variables";
-
 .header {
     box-shadow: $box-shadow-light;
     &--inactive {
@@ -78,7 +77,10 @@
                     float: right;
                     margin: 0 2rem;
                 }
-                .btn_icon--normal {
+                &__nf {
+                    float: right;
+                }
+                .iconBtn--normal {
                     width: 4vh;
                     height: 4vh;
                     float: right;
@@ -93,10 +95,11 @@
                 float: left;
                 height: 100%;
                 width: 15%;
+                background-color: $color-grey-dark;
             }
             &__logo {
-                height: 5vh;
-                width: 10vh;
+                height: 5rem;
+                width: 5rem;
                 margin: 2rem auto;
                 img {
                     height: 100%;

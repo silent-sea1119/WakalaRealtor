@@ -82,7 +82,6 @@ class FineUploader:
 
             newFile = RepoFileModel(
                 fileName, p[0], p[1], folderId, attrs['qquuid'])
-            print(newFile.json())
             newFile.save()
 
             dest = os.path.join(cls.UPLOAD_DIRECTORY, fileName + "." + p[1])
@@ -102,12 +101,11 @@ class FineUploader:
                 fileName = "".join(random.sample(chars, 6))
 
             ogName = attrs['qqfilename']
-            p = ogName.split(".").reverse()
+            p = ogName.split(".")
+
 
             newFile = RepoFileModel(fileName, p[0], p[1],folderId, attrs['qquuid'])
             newFile.save()
-
-           
 
             dst = os.path.join(cls.UPLOAD_DIRECTORY,fileName + "." + p[1])
 

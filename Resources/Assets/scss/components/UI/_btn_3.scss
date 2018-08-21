@@ -1,0 +1,33 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+.btn_3 {
+    border: solid .1rem $color-edulink-primary;
+    color: $color-edulink-primary;
+    &,
+    &--danger {
+        width: 80%;
+        height: 100%;
+        margin: 0 10%;
+        padding: 5% 0;
+        @include transition-type-1;
+    }
+    &:hover,
+    &--danger:hover {
+        border-radius: 1rem;
+        width: 100%;
+        margin: 0;
+        color: $color-primary-white;
+    }
+    &:hover {
+        background-color: $color-edulink-primary;
+        border-color: $color-edulink-primary;
+    }
+    &--danger {
+        border: solid .1rem $color-error-primary;
+        color: $color-error-primary;
+        &:hover {
+            opacity: 1;
+            background-color: $color-error-primary;
+        }
+    }
+}

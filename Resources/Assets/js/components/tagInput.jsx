@@ -145,7 +145,7 @@ class TagInput extends Component {
                     <div className="tagInput__input__buttons">
 
                         <div className="tagInput__input__add">
-                            <div className="btn_icon--normal" onClick={() => { this.toggleInput() }}>
+                            <div className="iconBtn--normal" onClick={() => { this.toggleInput() }}>
                                 <svg className="icon">
                                     <use xlinkHref="#add" />
                                 </svg>
@@ -154,7 +154,7 @@ class TagInput extends Component {
                         
                        
                         <div className="tagInput__input__cancel">
-                            <div className="btn_icon--normal" onClick={() => { this.toggleInput() }}>
+                            <div className="iconBtn--normal" onClick={() => { this.toggleInput() }}>
                                 <svg className="icon">
                                     <use xlinkHref="#back" />
                                 </svg>
@@ -162,7 +162,7 @@ class TagInput extends Component {
                         </div>
 
                         <div className="tagInput__input__confirm">
-                            <div className="btn_icon--normal" onClick={() => { this.addTag() }}>
+                            <div className="iconBtn--normal" onClick={() => { this.addTag() }}>
                                 <svg className="icon">
                                     <use xlinkHref="#check" />
                                 </svg>
@@ -204,7 +204,7 @@ class Tag extends Component {
         return (
             <div className="tag">
                 <div className="tag__cancel">
-                    <div className="btn_icon--white" onClick={() => { this.removeTag() }}>
+                    <div className="iconBtn--white" onClick={() => { this.removeTag() }}>
                         <svg className="icon">
                             <use xlinkHref="#close" />
                         </svg>

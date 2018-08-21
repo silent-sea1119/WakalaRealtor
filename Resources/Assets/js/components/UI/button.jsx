@@ -48,11 +48,12 @@ class Button extends Component {
 
         switch (this.state.status) {
             case 0: { status = "normal"; break; }
-            case 1: { status = "fail"; break; }
-            case 2: { status = "success"; break; }
+            case 1:
+            case 5: { status = "fail"; break; }
+            case 2: 
+            case 6:{ status = "success"; break; }
             case 3: { status = "loading"; break; }
             case 4: { status = "warning"; break; }
-            case 5: { status = "danger"; break; }
         }
 
         var config = this.props.config;

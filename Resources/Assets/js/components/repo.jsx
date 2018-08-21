@@ -506,7 +506,7 @@ class RepoFileView extends Component {
                     <div className="repo__fileView__topBar__fName f_h1">{this.setRepoDirName()}</div>
 
                     <div className="repo__fileView__topBar__toggle" onClick={() => { this.toggleButtons() }}>
-                        <div className="btn_icon--normal">
+                        <div className="iconBtn--normal">
                             <svg className="icon">
                                 <use xlinkHref="#menu" />
                             </svg>
@@ -1056,7 +1056,7 @@ class RepoFolder extends Component {
                     <div className="repoFolder__front__bottom">
                         <div className="repoFolder__name f_normal">{this.state.displayName}</div>
                         <div className="repoFolder__menuBtn" >
-                            <div className="btn_icon--white" onClick={() => { this.toggleFolderView() }}>
+                            <div className="iconBtn--white" onClick={() => { this.toggleFolderView() }}>
                                 <svg className="icon">
                                     <use xlinkHref="#back" />
                                 </svg>
@@ -1069,7 +1069,7 @@ class RepoFolder extends Component {
                     <div className="repoFolder__menu">
 
                         <div className="repoFolder__menu__option">
-                            <div className="btn_icon" onClick={() => { this.props.main.changeFolderDirectory(this.state.folder.id, this.state.folder.name) }}>
+                            <div className="iconBtn" onClick={() => { this.props.main.changeFolderDirectory(this.state.folder.id, this.state.folder.name) }}>
                                 <svg className="icon">
                                     <use xlinkHref="#view" />
                                 </svg>
@@ -1077,7 +1077,7 @@ class RepoFolder extends Component {
                         </div>
 
                         <div className="repoFolder__menu__option--delete ">
-                            <div className="btn_icon--danger" onClick={() => { this.deleteFolderFromRepo(false) }}>
+                            <div className="iconBtn--danger" onClick={() => { this.deleteFolderFromRepo(false) }}>
                                 <svg className="icon">
                                     <use xlinkHref="#trash" />
                                 </svg>
@@ -1088,7 +1088,7 @@ class RepoFolder extends Component {
                     <div className="repoFolder__back__bottom" >
                         <div className="repoFolder__back__bottom__box" ></div>
                         <div className="repoFolder__menuBtn" onClick={() => { this.toggleFolderView() }}>
-                            <div className="btn_icon--normal">
+                            <div className="iconBtn--normal">
                                 <svg className="icon">
                                     <use xlinkHref="#back" />
                                 </svg>
@@ -1311,7 +1311,7 @@ class RepoImageFile extends Component {
                     <div className="repoFile__front__bottom">
                         <div className="repoFile__name f_normal">{state.displayName}</div>
                         <div className="repoFile__menuBtn" onClick={() => { this.props.repoFile.toggleFileView() }}>
-                            <div className="btn_icon--white">
+                            <div className="iconBtn--white">
                                 <svg className="icon">
                                     <use xlinkHref="#back" />
                                 </svg>
@@ -1326,7 +1326,7 @@ class RepoImageFile extends Component {
                         <div className="repoFile__menu__option">
                             <a href={state.dir +  "/" + file.name + "." + file.type} target="_blank">
 
-                                <div className="btn_icon">
+                                <div className="iconBtn">
                                     <svg className="icon">
                                         <use xlinkHref="#view" />
                                     </svg>
@@ -1336,7 +1336,7 @@ class RepoImageFile extends Component {
                         </div>
 
                         <div className="repoFile__menu__option--delete ">
-                            <div className="btn_icon--danger" onClick={() => { this.props.repoFile.deleteFileFromRepo(false) }}>
+                            <div className="iconBtn--danger" onClick={() => { this.props.repoFile.deleteFileFromRepo(false) }}>
                                 <svg className="icon">
                                     <use xlinkHref="#trash" />
                                 </svg>
@@ -1348,7 +1348,7 @@ class RepoImageFile extends Component {
                     <div className="repoFile__back__bottom" >
                         <div className="repoFile__back__bottom__box" ></div>
                         <div className="repoFile__menuBtn icon_return">
-                            <div className="btn_icon--normal" onClick={() => { this.props.repoFile.toggleFileView() }}>
+                            <div className="iconBtn--normal" onClick={() => { this.props.repoFile.toggleFileView() }}>
                                 <svg className="icon">
                                     <use xlinkHref="#back" />
                                 </svg>
@@ -1399,7 +1399,7 @@ class RepoDocFile extends Component {
                     <div className="repoFile__front__bottom">
                         <div className="repoFile__name f_normal">{state.displayName}</div>
                         <div className="repoFile__menuBtn" >
-                            <div className="btn_icon--white" onClick={() => { this.props.repoFile.toggleFileView() }}>
+                            <div className="iconBtn--white" onClick={() => { this.props.repoFile.toggleFileView() }}>
                                 <svg className="icon">
                                     <use xlinkHref="#back" />
                                 </svg>
@@ -1413,7 +1413,7 @@ class RepoDocFile extends Component {
 
                         <div className="repoFile__menu__option ">
                             <a href={this.props.repoFile.state.dir +  "/" + file.name + "." + file.type} target="_blank" >
-                                <div className="btn_icon">
+                                <div className="iconBtn">
                                     <svg className="icon">
                                         <use xlinkHref="#view" />
                                     </svg>
@@ -1423,7 +1423,7 @@ class RepoDocFile extends Component {
 
                         <div className="repoFile__menu__option--delete ">
 
-                            <div className="btn_icon--danger" onClick={() => { this.props.repoFile.deleteFileFromRepo(false) }}>
+                            <div className="iconBtn--danger" onClick={() => { this.props.repoFile.deleteFileFromRepo(false) }}>
                                 <svg className="icon">
                                     <use xlinkHref="#trash" />
                                 </svg>
@@ -1435,7 +1435,7 @@ class RepoDocFile extends Component {
                     <div className="repoFile__back__bottom" >
                         <div className="repoFile__back__bottom__box" ></div>
                         <div className="repoFile__menuBtn icon_return">
-                            <div className="btn_icon--normal" onClick={() => { this.props.repoFile.toggleFileView() }}>
+                            <div className="iconBtn--normal" onClick={() => { this.props.repoFile.toggleFileView() }}>
                                 <svg className="icon">
                                     <use xlinkHref="#back" />
                                 </svg>

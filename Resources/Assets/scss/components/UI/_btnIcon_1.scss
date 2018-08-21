@@ -1,0 +1,71 @@
+/* btnIcon is a class for buttons containing an icon and a label */
+
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+.btnIcon_1 {
+    &,
+    &--normal {
+        background-color: $color-edulink-primary;
+    }
+    &,
+    &--normal,
+    &--disabled,
+    &--success,
+    &--failed,
+    &--warning,
+    &--danger {
+        width: 100%;
+        height: 100%;
+        float: left;
+        overflow: hidden;
+        opacity: 0.8;
+        cursor: pointer;
+        position: relative;
+        @include transition-type-1;
+        &:hover {
+            opacity: 1.0;
+        }
+    }
+    &--disabled,
+    &--success,
+    &--failed,
+    &--warning,
+    &--danger {
+        .btnIcon_1__icon {
+            border-right: none;
+        }
+    }
+    &--success {
+        background-color: $color-success-primary;
+    }
+    &--failed {
+        background-color: $color-error-primary;
+    }
+    &--warning {
+        background-color: $color-warning-primary;
+    }
+    &--danger {
+        background-color: $color-danger-primary;
+    }
+    &--disabled {
+        background-color: $color-grey-fair;
+    }
+    &__icon {
+        width: 5rem;
+        height: 5rem;
+        float: left;
+        overflow: hidden;
+        padding: 1.5rem;
+        .icon {
+            width: 100%;
+            height: 100%;
+            fill: $color-primary-white;
+        }
+    }
+    &__label {
+        color: $color-primary-white;
+        line-height: 5rem;
+        padding: 0 1.5rem 0 0;
+        float: right;
+    }
+}

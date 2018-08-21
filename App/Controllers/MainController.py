@@ -1,6 +1,7 @@
 from flask import render_template,request
 from App.Models.Post import PostModel
 from App.Models.Article import ArticleModel
+from App.Models.Tag import TagModel
 
 class MainController:
 
@@ -28,6 +29,44 @@ class MainController:
             return {"error":0,"content":x}
         else :
             return {"error": 1 }
+
+    @staticmethod
+    def getPosts(offset):
+        posts = PostModel.get_posts_by_offset(offset)
+        tags = []
+
+        for p in posts:
+            post = p.get_post()
+
+            ts = post.tags
+
+            for t in ts:
+                if t.tagId not in tags:
+                    tags.append(t.tagId)
+
+        tagsFound = TagModel.get_all_tags(tags)
+        content = []
+
+        for p in posts:
+            x = {}
+            post = p.get_post()
+            x['log'] = p.json()
+            x['post'] = post.json()
+            x['post']['body'] = ""
+
+            ts = post.tags
+            xtags = []
+
+            for t in ts:
+                for y in tagsFound:
+                    if t.tagId == y.id:
+                        xtags.append(y.json())
+
+            x['tags'] = xtags
+
+            content.append(x)
+
+        return {"error": 0, "content": content}
 
 
     def articleReaction(self, param, param2):

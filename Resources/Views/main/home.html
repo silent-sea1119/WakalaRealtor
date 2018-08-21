@@ -1,0 +1,22 @@
+{% extends "layouts/main.html" %} 
+
+{% block title %}Wakali Estate Holdings{% endblock %}
+
+{% block styles %}
+
+{{stylesheet_tag('main_home_css')| safe}}
+
+{% endblock %}
+
+{% block scripts %} 
+{% endblock %} 
+
+
+{% block body %}
+
+<div id="homeComponent"></div>
+
+
+{{javascript_tag('main_home_js') | safe}} 
+
+{% endblock %}

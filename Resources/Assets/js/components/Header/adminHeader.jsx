@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import{ webUrl , setSVGIcons} from '../../abstract/variables';
 import axios from 'axios';
+import IconButton from '../UI/iconButton';
 
 class AdminHeader extends Component {
     constructor(props){
@@ -18,12 +19,12 @@ class AdminHeader extends Component {
                     error:0
                 }
             },
-            seenCount:0
+            seenCount:0,
+            iconButtons:[]
         }
     }
 
     componentWillMount(){
-        //this.setData();
         document.getElementById("svg_icons").innerHTML = setSVGIcons();
     }
 
@@ -77,6 +78,7 @@ class AdminHeader extends Component {
                 }
                 else {
                     state.ajax.retrieveData.error = "Access to server failed. Try again Later! ";
+                    state.ajax.retrieveData.attempts =0;
                     this.setState(state);
                 }
                 break;
@@ -97,36 +99,39 @@ class AdminHeader extends Component {
             <div className="header--active " style={{ margin: 0, padding: 0 }}>
                     <div className="header">
                         <div className="header__left">
-                            <a href={webUrl + 'admin/home'}>
+                            <a href={webUrl + 'admin/posts'}>
                                 <div className="header__logo">
-                                    <img src={webUrl + 'assets/images/edulink.png'} />
+                                    <img src={webUrl + 'assets/images/logo.png'} />
                                 </div>
                             </a>
                         </div>
 
-                        <div className="header__title f_banner_1 f_text-capitalize">Admin Platform</div>
+                        <div className="header__title f_banner_1 ">Wakala Admin Platform</div>
 
 
                         <div className="header__right">
                             <div className="header__right__logOut">
                                 <a href={webUrl + 'admin/logout'}>
-                                    <div className="btn_1--danger f_button_2 f_text-capitalize">Logout</div>
+                                    <div className="btn_1--danger f_button_2 ">Logout</div>
                                 </a>
                             </div>
 
-                            <div className="header__right__nf btn_icon--normal" onClick={() => { this.togglePopupMenu(1) }}>
-                                <svg className="icon">
-                                    <use xlinkHref={"#note"} />
-                                </svg>
-                                <div className="btn_icon__number" style={this.state.seenCount == 0 ? { display: 'none' } : { display: 'block' }}>{this.state.seenCount}</div>
+                            <div className="header__right__nf">
+                                <IconButton
+                                    parent={this}
+                                    status={0}
+                                    config={{
+                                        action: () => {
+                                            this.togglePopupMenu(1)
+                                        },
+                                        icon: "note",
+                                        class: "iconBtn"
+                                    }}
+                                />
                             </div>
 
                         </div>
-
-
-
                     </div>
-
             </div>
         );
     }

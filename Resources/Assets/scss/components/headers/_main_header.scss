@@ -1,6 +1,5 @@
 @import "../../abstracts/variables";
 @import "../../abstracts/mixins";
-
 .popupMenu--active,
 .popupMenu--inActive {
     @include transition-type-1;
@@ -59,8 +58,8 @@
         }
     }
     &__logo {
-        width: 8rem;
-        height: 4rem;
+        width: 5rem;
+        height: 5rem;
         float: left;
         position: absolute;
         top: 50%;
@@ -71,11 +70,7 @@
         }
         @include respond(tab-land) {
             height: 4rem;
-            width: 8rem;
-        }
-        @include respond(phone) {
-            height: 3rem;
-            width: 6rem;
+            width: 4rem;
         }
     }
     &__title {

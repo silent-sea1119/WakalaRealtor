@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { webUrl, setSVGIcons} from '../../abstract/variables';
-import MenuType1 from '../UI/menuType1';
+import Menu from '../UI/menu';
 
 class MainHeader extends Component {
     constructor(props) {
@@ -49,8 +49,8 @@ class MainHeader extends Component {
     }
 
     render() {
-        var headerClass = " header container-fluid ";
-        this.state.toggleHeader == 0 ? headerClass += "header--normal" : headerClass += "header--float";
+        var headerClass = "header header";
+        this.state.toggleHeader == 0 ? headerClass += "--normal" : headerClass += "--float";
         var popupMenu = "popupMenu";
 
         var menuLinks = [
@@ -72,14 +72,14 @@ class MainHeader extends Component {
                     <div className="header__left">
                         <a href={webUrl}>
                             <div className="header__logo">
-                                <img src={webUrl + 'assets/images/logo2.png'} />
+                                <img src={webUrl + 'assets/images/logo.png'} />
                             </div>
                         </a>
-                        <div className="header__title f_banner_1">Edulink</div>
+                        <div className="header__title f_banner_1">Wakala Realtor</div>
                     </div>
 
                     <div className="header__right">
-                        <div className="header__right__menuBtn btn_icon--normal" onClick={() => { this.togglePopupMenu(1) }}>
+                        <div className="header__right__menuBtn iconBtn--normal" onClick={() => { this.togglePopupMenu(1) }}>
                             <svg className="icon">
                                 <use xlinkHref="#menu" />
                             </svg>
@@ -87,13 +87,18 @@ class MainHeader extends Component {
 
                         <div className="header__right__text f_normal f_text-capitalize t-56"></div>
 
-
                     </div>
                 </div>
 
                 <div className={this.state.togglePopupMenu == 1 ? popupMenu + "--active" : popupMenu + "--disabled"}>
                     <div className="popupMenu__mainMenu">
-                        <MenuType1 menu={menuLinks} opposite={true} />
+                        <Menu
+                            parent={this} 
+                            menu={menuLinks} 
+                            config={{
+                                class:"menuType1",
+                                opposite:true
+                            }}/>
                     </div>
                 </div>
 

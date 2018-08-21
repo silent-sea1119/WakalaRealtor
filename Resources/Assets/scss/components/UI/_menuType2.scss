@@ -1,0 +1,14 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+.menuType2 {
+    width: 90%;
+    height: auto;
+    float: left;
+    margin: 0 5%;
+    &__link {
+        width: 80%;
+        height: auto;
+        margin: 1rem 10%;
+        float: left;
+    }
+}

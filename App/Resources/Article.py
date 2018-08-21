@@ -70,7 +70,7 @@ class AdminArticle(Resource):
             image = RepoFileModel.find_by_id(data.art__image)
             image.increase_users()
 
-            for tag in data.art__tags:
+            for tag in json.loads(data.art__tags):
                 newTag = ArticleTagModel(article.id, tag)
                 newTag.save()
            

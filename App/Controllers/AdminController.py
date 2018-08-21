@@ -93,9 +93,9 @@ class AdminController:
             return jsonify({"error": 0, "content": content})
 
         else :
-            folder = RepoFolderModel().find_by_id(folderId)
+            folder = RepoFolderModel.find_by_id(folderId)
             if bool(folder):
-                content = RepoFolderModel().get_content(folderId)
+                content = folder.get_content(folderId)
                 return jsonify({"error": 0, "content": content})
             else:
                 return jsonify({"error":1, "error_msg":"Folder doesn't exist!"})
@@ -106,7 +106,8 @@ class AdminController:
         tags = []
 
         for p in posts:
-            ts = p.post.tags
+            post = p.get_post()
+            ts = post.tags
 
             for t in ts:
                 if t.tagId not in tags:
@@ -117,11 +118,12 @@ class AdminController:
 
         for p in posts:
             x = {}
+            post = p.get_post()
             x['log'] = p.json()
-            x['post'] = p.post.json()
+            x['post'] = post.json()
             x['post']['body'] = ""
 
-            ts = p.post.tags
+            ts = post.tags
             xtags = []
 
             for t in ts:

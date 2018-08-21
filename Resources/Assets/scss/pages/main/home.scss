@@ -1,6 +1,5 @@
 @import '../../abstracts/variables';
 @import '../../abstracts/mixins';
-@import '../../components/searchBar';
 #section_1 {
     float: left;
     height: 100vh;
@@ -27,10 +26,33 @@
     &--disabled {
         height: 0;
     }
+    &--scrollable {
+        overflow: scroll;
+        width: 100%;
+        height: 100%;
+    }
+    &h {
+        &--active,
+        &--disabled {
+            @include transition-type-2;
+            background-color: $color-primary-white;
+            float: left;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+        &--active {
+            width: 100%;
+        }
+        &--disabled {
+            width: 0;
+        }
+    }
     &__options {
         &--1,
         &--2,
-        &--3 {
+        &--3,
+        &--4 {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -39,57 +61,41 @@
         }
     }
     &__options--1 &__option--active {
-        border: solid .1rem $color-primary-white;
+        border: solid .1rem $color-edulink-secondary;
         .icon {
-            fill: $color-primary-white;
+            fill: $color-edulink-secondary;
         }
         &:hover {
-            border: solid .1rem $color-edulink-primary;
+            border: solid .1rem $color-edulink-secondary;
             .icon {
-                fill: $color-edulink-primary;
+                fill: $color-edulink-secondary;
             }
         }
     }
     &__options--1 &__option--disabled {
-        border: solid .1rem $color-primary-white;
-        .icon {
-            fill: $color-primary-white;
-        }
-        &:hover {
-            border: solid .1rem $color-edulink-primary;
-            .icon {
-                fill: $color-edulink-primary;
-            }
-        }
-    }
-    &__options--2 &__option--active {
-        border: solid .1rem $color-edulink-primary;
-        background-color: $color-edulink-primary;
-        .icon {
-            fill: $color-primary-white;
-        }
-    }
-    &__options--2 &__option--disabled {
         border: solid .1rem $color-edulink-primary;
         .icon {
             fill: $color-edulink-primary;
         }
         &:hover {
-            border: solid .1rem $color-edulink-primary;
-            background-color: $color-edulink-primary;
+            border: solid .1rem $color-edulink-secondary;
             .icon {
-                fill: $color-primary-white;
+                fill: $color-edulink-secondary;
             }
         }
     }
-    &__options--3 &__option--active {
+    &__options--2 &__option--active,
+    &__options--3 &__option--active,
+    &__options--4 &__option--active {
         border: solid .1rem $color-edulink-primary;
         background-color: $color-edulink-primary;
         .icon {
             fill: $color-primary-white;
         }
     }
-    &__options--3 &__option--disabled {
+    &__options--2 &__option--disabled,
+    &__options--3 &__option--disabled,
+    &__options--4 &__option--disabled {
         border: solid .1rem $color-edulink-primary;
         .icon {
             fill: $color-edulink-primary;
@@ -114,47 +120,6 @@
                 height: 5rem;
                 padding: 1.5rem;
             }
-        }
-    }
-}
-
-.searchView {
-    width: 100%;
-    float: left;
-    height: 100%;
-    &__title {
-        color: $color-primary-white;
-        margin-bottom: 3rem;
-        clear: both;
-        text-shadow: $text-shadow-light;
-    }
-    &__search {
-        margin: 5vh 0 10% 50%;
-        height: 5rem;
-        float: left;
-        transform: translateX(-50%);
-        border-radius: .3rem;
-        box-shadow: $box-shadow-light;
-        width: 50%;
-        @include respond(desk-small) {
-            width: 70%;
-        }
-    }
-    &__foreground {
-        z-index: 20;
-        overflow: hidden;
-        position: absolute;
-        margin: 20vh 25% 0 25%;
-        width: 50%;
-        background-color: rgba(0, 0, 0, 0.18);
-        box-shadow: 0 0 23rem 5rem rgba(0, 0, 0, 0.25);
-        @include respond(tab-land) {
-            width: 70%;
-            margin: 20vh 15% 0 15%;
-        }
-        @include respond(phone) {
-            width: 90%;
-            margin: 20vh 5% 0 5%;
         }
     }
 }
@@ -236,6 +201,39 @@
             }
         }
     }
+}
+
+.content {
+    &__view {
+        min-height: 60vh;
+        float: left;
+        width: 100%;
+        margin-top: 10vh;
+        padding: 2rem 0 0 10%;
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        grid-template-rows: auto;
+        .pro {
+            grid-column: span 1;
+        }
+        @include respond(tab-land) {
+            grid-template-columns: 25% 25% 25% 25%;
+        }
+        @include respond(tab-port) {
+            grid-template-columns: 33.3% 33.3% 33.3%;
+        }
+        @include respond(phone) {
+            grid-template-columns: 50% 50%;
+        }
+    }
+}
+
+.loadBtn {
+    margin-top: 2rem;
+    float: left;
+    width: 15rem;
+    transform: translateX(-50%);
+    margin-left: 50%;
 }
 
 .infoView {
@@ -346,6 +344,401 @@
         width: 100%;
         strong {
             color: $color-success-primary;
+        }
+    }
+}
+
+.pageTop {
+    height: 50vh;
+    width: 60%;
+    margin-left: 20%;
+    overflow: hidden;
+    position: relative;
+    &__background {
+        width: 100%;
+        height: 50vh;
+        overflow: hidden;
+        position: absolute;
+        z-index: 0;
+        img {
+            width: 100%;
+            height: auto;
+            margin-left: -2rem;
+        }
+    }
+    &__foreground {
+        width: 40%;
+        height: 25rem;
+        margin: 15vh 30%;
+        position: absolute;
+        z-index: 0;
+    }
+}
+
+.section {
+    width: 100%;
+    position: relative;
+    float: left;
+    clear: both;
+    &__1,
+    &__2,
+    &__3 {
+        background-color: $color-primary-white;
+    }
+    &__1,
+    &__3 {
+        width: 20%;
+        position: absolute;
+        &,
+        &--float {
+            min-height: 20rem;
+            height: auto;
+            float: left;
+            padding: 0;
+        }
+        &--float {
+            position: fixed;
+            margin-top: -40rem;
+        }
+        @include respond(phone) {
+            display: none;
+        }
+    }
+    &__2 {
+        width: 60%;
+        margin: 0 20%;
+        padding: 0 5%;
+        background-color: $color-primary-white;
+        min-height: 60rem;
+        position: relative;
+        float: left;
+        @include respond(phone) {
+            width: 90%;
+            margin: -2.5rem 5% 0 5%;
+        }
+    }
+    &__3 {
+        margin-left: 75%;
+    }
+}
+
+.navigation {
+    width: 100%;
+    float: left;
+    height: 5rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    &__home {
+        float: left;
+    }
+    &__category {
+        min-width: 10%;
+        float: left;
+        padding: 1.5rem 2rem;
+        color: $color-grey-dark;
+        cursor: pointer;
+    }
+    &__program {
+        min-width: 10%;
+        float: left;
+        padding: 1.5rem 2rem;
+        color: $color-success-primary;
+        cursor: pointer;
+    }
+    &__stat {
+        float: right;
+        height: 4rem;
+        padding: 1rem 0;
+        &__view,
+        &__likes,
+        &__com {
+            height: 3rem;
+            float: left;
+        }
+        &__icon {
+            width: 3rem;
+            height: 3rem;
+            padding: .5rem 0;
+            overflow: hidden;
+            float: left;
+        }
+        &__value {
+            float: right;
+            padding: 0 1rem;
+            line-height: 3rem;
+            color: $color-edulink-secondary;
+        }
+    }
+    &__buttons {
+        float: right;
+        padding: 1rem 0;
+        &__button {
+            width: 10rem;
+            height: 3rem;
+            float: right;
+        }
+    }
+}
+
+.product {
+    width: 100%;
+    overflow: hidden;
+    float: left;
+    margin-bottom: 5rem;
+    &__image {
+        width: 100%;
+        height: 30rem;
+        float: left;
+    }
+    &__content {
+        width: 100%;
+        float: left;
+    }
+    &__primary {
+        float: left;
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+    &__title {
+        width: 100%;
+        padding: 1.2rem 0;
+        float: left;
+        color: $color-edulink-primary;
+    }
+    &__author {
+        line-height: 4rem;
+        float: left;
+    }
+    &__time {
+        line-height: 4rem;
+        margin-left: 2rem;
+        float: left;
+        color: $color-edulink-primary;
+    }
+    &__text {
+        margin-bottom: 5rem;
+        float: left;
+        min-height: 10rem;
+        width: 100%;
+        &__title {
+            padding: 1.2rem 3rem;
+            margin-bottom: 3rem;
+            float: left;
+            color: $color-grey-dark;
+            width: 100%;
+            border-left: solid .5rem $color-edulink-primary;
+        }
+    }
+    &__commentSection {
+        width: 100%;
+        float: left;
+    }
+    &__tags {
+        width: 100%;
+        float: left;
+        padding: 2rem 0;
+    }
+    &__tag {
+        background-color: $color-edulink-primary;
+        float: left;
+        margin-right: 2rem;
+        cursor: pointer;
+        padding: 0 1rem;
+        line-height: 4rem;
+        color: $color-primary-white;
+    }
+}
+
+.vP {
+    margin-top: 10vh;
+    float: left;
+    width: 80%;
+    margin: 10vh 10% 0 10%;
+    @include respond(tab-port) {
+        width: 100%;
+        margin: 10vh 0 0 0;
+    }
+}
+
+.accountView {
+    margin-top: 10vh;
+    width: 80%;
+    margin-left: 10%;
+    float: left;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 80vh;
+    @include respond(tab-land) {
+        grid-template-columns: 100%;
+    }
+}
+
+.loginForm {
+    grid-column: span 1;
+    height: 100%;
+    h1 {
+        color: $color-edulink-primary;
+        margin-bottom: 3rem;
+        float: left;
+    }
+    h2 {
+        color: $color-edulink-secondary;
+        margin-bottom: 1rem;
+        float: left;
+    }
+    &__form {
+        float: left;
+        width: 60%;
+        margin: 5rem 20% 0 20%;
+        position: relative;
+    }
+    &__errorComment {
+        width: 70%;
+        float: left;
+    }
+    &__username,
+    &__code,
+    &__pass {
+        margin: 2.5rem 0;
+        width: 70%;
+        height: 3.5rem;
+        float: left;
+        input {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__btn {
+        width: 70%;
+        margin: 2rem 0;
+        float: left;
+    }
+}
+
+.regView {
+    grid-column: span 1;
+    height: 100%;
+    background-color: $color-edulink-primary;
+    &__view {
+        overflow-x: hidden;
+    }
+    .viewh--active {
+        background-color: transparent;
+    }
+}
+
+.reg {
+    &__form {
+        position: relative;
+        width: 60%;
+        margin: 5rem 20% 10rem 20%;
+        float: left;
+        h1,
+        h2 {
+            color: $color-primary-white;
+            margin-bottom: 2rem;
+            float: left;
+        }
+        .btn_1--normal {
+            color: $color-edulink-secondary !important;
+            border: solid 0.1rem $color-edulink-secondary;
+        }
+    }
+    &__text,
+    &__date,
+    &__dd,
+    &__placement {
+        float: left;
+        width: 100%;
+        margin-bottom: 3rem;
+        .text_input_4--success input {
+            color: $color-edulink-secondary !important;
+        }
+    }
+    &__password {
+        .pass {
+            float: left;
+            margin-bottom: 3rem;
+            width: 100%;
+        }
+    }
+    &__dd {
+        height: 5rem;
+    }
+    &__placement {
+        padding-left: 1rem;
+        &__comment {
+            color: $color-grey-light;
+            float: left;
+            margin: .5rem 0;
+        }
+        &__label {
+            color: $color-edulink-secondary;
+            margin-bottom: 1rem;
+        }
+        .tagInput {
+            .iconBtn--normal .icon {
+                fill: $color-edulink-secondary;
+            }
+        }
+        .tag {
+            background-color: $color-primary-white;
+            &S {
+                background-color: $color-primary-white;
+                color: $color-edulink-secondary;
+                &:hover {
+                    background: $color-success-primary;
+                    box-shadow: $box-shadow-light;
+                }
+            }
+            &__name {
+                color: $color-edulink-secondary;
+            }
+            &__cancel {
+                border: solid .1rem $color-primary-white;
+                .btn_icon--white {
+                    .icon {
+                        fill: $color-edulink-primary;
+                    }
+                    &:hover {
+                        border: solid .1rem $color-error-primary;
+                        .icon {
+                            fill: $color-error-primary;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__save {
+        width: 15rem;
+        float: left;
+        height: 5rem;
+        margin-right: 2rem;
+    }
+    &__completed {
+        margin: 5rem 20%;
+        float: left;
+        width: 60%;
+        h1,
+        h2 {
+            color: $color-primary-white;
+            margin-bottom: 2rem;
+            float: left;
+        }
+        .btn_1--normal {
+            color: $color-edulink-secondary !important;
+            border: solid 0.1rem $color-edulink-secondary;
+        }
+        &__buttons {
+            float: left;
+            padding: 1rem 0;
+        }
+        &__button {
+            width: 10rem;
+            height: 3rem;
+            float: left;
+            margin-right: 2rem;
         }
     }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 class TextInput extends Component {
     constructor(props) {
@@ -12,16 +13,19 @@ class TextInput extends Component {
             }
         */
 
+        var config = this.props.config;
+
         this.state = {
             defaultStatus:this.props.status,
             status: this.props.status,
             errorText:"",
-            inputValue:this.props.config.inputValue,
-            inputLength: this.props.config.length == undefined ? 999 : this.props.config.length
+            inputValue:config.inputValue == undefined ? "" : config.inputValue,
+            inputLength: config.length == undefined ? 999 : config.length
         }
 
         this.handleValueChange = this.handleValueChange.bind(this);
         this.focus = this.focus.bind(this);
+        this.setFloatingLabel = this.setFloatingLabel.bind(this);
     }
 
     componentDidMount() {
@@ -51,6 +55,17 @@ class TextInput extends Component {
         ReactDOM.findDOMNode(this.refs.textInput).focus();
     }
 
+    setFloatingLabel(){
+        var label = this.props.config.floatingLabel;
+        if( label != undefined && label){
+            var name = this.props.config.label;
+            return (
+                <label htmlFor={name.replace(" ","")}>{name}</label>
+            );
+        }
+    }
+
+
     render() {
         var status = "";
         var error = false;
@@ -76,11 +91,20 @@ class TextInput extends Component {
         var errorClass = "f_comment_1 " + config.type + "__error--";
         var commentClass = "f_comment_1 " + config.type + "__comment--";
 
-        return (
-            <div className={config.type + "--" + status} >
-                <div className={config.type + "__label f_label_1" }>{config.label}</div>
+        var fl = config.floatingLabel != undefined && config.floatingLabel ? true : false;
+
+        var mainClass = config.type + "--" + status;
+        mainClass += fl ? " f_input_1 has-float-label" : "";
+
+        var labelClass = "f_label_1 " + config.type + "__label";
+        labelClass += fl ? "--disabled" : "";
+
+        return (    
+            <div className={mainClass} >
+                <div className={labelClass}>{config.label}</div>
 
                 <input 
+                    id={config.label.replace(" ","")}
                     ref="textInput" 
                     type="text" 
                     className="f_input_1" 
@@ -88,6 +112,8 @@ class TextInput extends Component {
                     onChange={this.handleValueChange}
                     placeholder={config.placeholder == undefined ? "" : config.placeholder}
                     />
+                
+                {this.setFloatingLabel()}
 
                 <div className={error ? commentClass + "disabled" : commentClass + "active"}>{config.comment}</div>
                 <div className={error ? errorClass + "active" : errorClass + 'disabled'}>

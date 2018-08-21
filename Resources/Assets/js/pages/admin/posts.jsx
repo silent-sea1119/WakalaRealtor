@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PostsView from '../../components/Admin/posts';
+import Posts from '../../components/Admin/posts';
 
 ReactDOM.render( 
-    <PostsView view={[1,0,0]}/> ,
+    <Posts view={[1,0,0]}/> ,
     document.getElementById('postsViewComponent')
 );

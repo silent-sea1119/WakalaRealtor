@@ -5,11 +5,16 @@ class ButtonWithIcon extends Component {
         super(props);
 
         /*
-            Config = {
-                class:"btn_1",
-                action:this.function,
-                label:"Text"
-            }
+            <ButtonWithIcon
+                parent={this}
+                status={0}
+                config={{
+                    class:"btnIcon_1",
+                    action: this.toggleRepo,
+                    label:"Repo",
+                    icon="repo"
+                    }}
+                />
         */
 
         this.state = {
@@ -17,7 +22,6 @@ class ButtonWithIcon extends Component {
             label:this.props.config.label == undefined ? "" : this.props.config.label
         }
 
-        this.setStatus = this.setStatus.bind(this);
     }
 
     componentDidMount(){

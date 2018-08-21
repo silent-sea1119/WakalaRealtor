@@ -5,11 +5,19 @@ class IconButton extends Component {
         super(props);
 
         /*
-            Config = {
-                icon:"Text",
-                class:"btn_1",
-                action:this.function
-            }
+            <div className="header__right__nf">
+                <IconButton
+                    parent={this}
+                    status={0}
+                    config={{
+                        action:()=>{
+                            this.togglePopupMenu(1)
+                        },
+                        icon:"note",
+                        class:"iconBtn"
+                    }}
+                />
+            </div>
         */
 
         this.state = {

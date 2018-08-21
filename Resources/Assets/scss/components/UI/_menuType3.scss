@@ -1,0 +1,24 @@
+@import "../../abstracts/variables";
+@import "../../abstracts/mixins";
+.menuType3 {
+    width: 100%;
+    height: auto;
+    float: left;
+    &__section {
+        width: 100%;
+        margin: 0 auto 2rem auto;
+        height: auto;
+    }
+    &__link {
+        float: left;
+        color: $color-primary-white;
+        background-color: $color-grey-dark;
+        width: 100%;
+        padding: 1rem 0;
+        cursor: pointer;
+        @include transition-type-1;
+        &:hover {
+            background-color: $color-edulink-secondary;
+        }
+    }
+}

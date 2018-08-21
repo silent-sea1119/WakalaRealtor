@@ -57,6 +57,7 @@
     "@nlib/human-readable": "^1.0.1",
     "install": "^0.12.1",
     "npm": "^6.3.0",
+    "react-slick": "^0.23.1",
     "react-sticky-content": "^1.0.2"
   }
 }

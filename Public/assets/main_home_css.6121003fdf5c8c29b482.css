@@ -1,0 +1,596 @@
+#section_1 {
+  float: left;
+  height: 100vh;
+  margin-top: -10vh;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  position: relative; }
+
+.view--active, .view--disabled {
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+  background-color: #FFF;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width: 100%; }
+
+.view--active {
+  height: 100%; }
+
+.view--disabled {
+  height: 0; }
+
+.view--scrollable {
+  overflow: scroll;
+  width: 100%;
+  height: 100%; }
+
+.viewh--active, .viewh--disabled {
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+  background-color: #FFF;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  height: 100%; }
+
+.viewh--active {
+  width: 100%; }
+
+.viewh--disabled {
+  width: 0; }
+
+.view__options--1, .view__options--2, .view__options--3, .view__options--4 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  left: 2%; }
+
+.view__options--1 .view__option--active {
+  border: solid 0.1rem black; }
+  .view__options--1 .view__option--active .icon {
+    fill: black; }
+  .view__options--1 .view__option--active:hover {
+    border: solid 0.1rem black; }
+    .view__options--1 .view__option--active:hover .icon {
+      fill: black; }
+
+.view__options--1 .view__option--disabled {
+  border: solid 0.1rem #c5a516; }
+  .view__options--1 .view__option--disabled .icon {
+    fill: #c5a516; }
+  .view__options--1 .view__option--disabled:hover {
+    border: solid 0.1rem black; }
+    .view__options--1 .view__option--disabled:hover .icon {
+      fill: black; }
+
+.view__options--2 .view__option--active,
+.view__options--3 .view__option--active,
+.view__options--4 .view__option--active {
+  border: solid 0.1rem #c5a516;
+  background-color: #c5a516; }
+  .view__options--2 .view__option--active .icon,
+  .view__options--3 .view__option--active .icon,
+  .view__options--4 .view__option--active .icon {
+    fill: #FFF; }
+
+.view__options--2 .view__option--disabled,
+.view__options--3 .view__option--disabled,
+.view__options--4 .view__option--disabled {
+  border: solid 0.1rem #c5a516; }
+  .view__options--2 .view__option--disabled .icon,
+  .view__options--3 .view__option--disabled .icon,
+  .view__options--4 .view__option--disabled .icon {
+    fill: #c5a516; }
+  .view__options--2 .view__option--disabled:hover,
+  .view__options--3 .view__option--disabled:hover,
+  .view__options--4 .view__option--disabled:hover {
+    border: solid 0.1rem #c5a516;
+    background-color: #c5a516; }
+    .view__options--2 .view__option--disabled:hover .icon,
+    .view__options--3 .view__option--disabled:hover .icon,
+    .view__options--4 .view__option--disabled:hover .icon {
+      fill: #FFF; }
+
+.view__option--active, .view__option--disabled {
+  border: solid 0.1rem #FFF;
+  width: 5rem;
+  height: 5rem;
+  clear: both; }
+  .view__option--active .icon, .view__option--disabled .icon {
+    width: 5rem;
+    height: 5rem;
+    padding: 1.5rem; }
+
+.lview {
+  height: 100%;
+  width: 100%;
+  padding: 15vh 10% 0 10%;
+  background-color: #CCC;
+  position: relative; }
+  .lview--2 .lview__content, .lview--4 .lview__content {
+    width: 50%;
+    margin-left: 50%; }
+  .lview--2 .lview__buttons, .lview--4 .lview__buttons {
+    left: 50%; }
+  .lview__content {
+    float: left;
+    width: 50%;
+    padding: 2rem; }
+  .lview__title, .lview__body {
+    float: left;
+    color: #FFF;
+    margin-bottom: 3rem;
+    clear: both;
+    text-shadow: 0 0 2rem #000; }
+  .lview__body {
+    line-height: 3rem; }
+  .lview__buttons {
+    position: absolute;
+    z-index: 50;
+    bottom: 20vh;
+    float: left; }
+  .lview__button {
+    margin-right: 2rem;
+    width: 15rem;
+    float: left; }
+  .lview__arrow .icon {
+    width: 4rem;
+    height: 4rem;
+    fill: #FFF; }
+  @media (max-width: 56.25em) {
+    .lview {
+      padding: 15vh 10% 0 15%; }
+      .lview__content {
+        width: 80%;
+        padding: 2rem; } }
+  @media (max-width: 37.5em) {
+    .lview__content {
+      width: 90%;
+      padding: 2rem; }
+    .lview--2 .lview__content, .lview--4 .lview__content {
+      width: 90%;
+      margin: 0; }
+    .lview--2 .lview__buttons, .lview--4 .lview__buttons {
+      left: 15%; } }
+
+.content__view {
+  min-height: 60vh;
+  float: left;
+  width: 100%;
+  margin-top: 10vh;
+  padding: 2rem 0 0 10%;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: auto; }
+  .content__view .pro {
+    grid-column: span 1; }
+  @media (max-width: 56.25em) {
+    .content__view {
+      grid-template-columns: 25% 25% 25% 25%; } }
+  @media (max-width: 75em) {
+    .content__view {
+      grid-template-columns: 33.3% 33.3% 33.3%; } }
+  @media (max-width: 37.5em) {
+    .content__view {
+      grid-template-columns: 50% 50%; } }
+
+.loadBtn {
+  margin-top: 2rem;
+  float: left;
+  width: 15rem;
+  transform: translateX(-50%);
+  margin-left: 50%; }
+
+.infoView {
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 90vh;
+  width: 100%;
+  margin-top: 10vh; }
+  .infoView__content {
+    float: left; }
+  .infoView__1 {
+    float: left;
+    width: 100%;
+    padding: 5rem 20%; }
+    .infoView__1__title {
+      width: 100%;
+      margin-bottom: 3rem;
+      color: #c5a516; }
+    .infoView__1__text {
+      width: 100%;
+      color: #171717; }
+  .infoView__2 {
+    float: left;
+    width: 100%;
+    padding: 5rem 20%; }
+  .infoView__3 {
+    float: left;
+    width: 100%;
+    padding: 5rem 0;
+    background: radial-gradient(circle at center, black, #c5a516); }
+    .infoView__3__title {
+      width: 100%;
+      margin-bottom: 1rem;
+      color: #FFF; }
+    .infoView__3__text {
+      width: 100%;
+      color: #FFF;
+      line-height: 2rem; }
+    .infoView__3__buttons {
+      margin: 5rem 0 0 50%;
+      transform: translatex(-50%);
+      float: left; }
+    .infoView__3__button {
+      margin: 0 2rem;
+      width: 20rem;
+      float: left; }
+
+.infoBox {
+  width: 33.3%;
+  padding: 4rem;
+  float: left; }
+  @media (max-width: 56.25em) {
+    .infoBox {
+      width: 50%;
+      padding: 4rem 2rem; } }
+  @media (max-width: 37.5em) {
+    .infoBox {
+      width: 100%;
+      padding: 4rem 0; } }
+  .infoBox__icon {
+    width: 8rem;
+    height: 8rem;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    float: left; }
+    .infoBox__icon .icon {
+      width: 100%;
+      height: 100%; }
+  .infoBox__title {
+    margin: 2rem 0 3rem 50%;
+    transform: translateX(-50%);
+    color: #FFF;
+    float: left;
+    clear: both;
+    background: linear-gradient(90deg, #c5a516, black);
+    padding: 1rem 3rem; }
+  .infoBox__text {
+    width: 100%;
+    color: #171717;
+    float: left;
+    margin: 2rem 0; }
+  .infoBox__list {
+    float: left;
+    width: 100%;
+    color: #171717; }
+    .infoBox__list li {
+      padding: .5rem 0; }
+  .infoBox__price {
+    float: left;
+    color: #171717;
+    width: 100%; }
+    .infoBox__price strong {
+      color: #00a84f; }
+
+.pageTop {
+  height: 50vh;
+  width: 60%;
+  margin-left: 20%;
+  overflow: hidden;
+  position: relative; }
+  .pageTop__background {
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+    position: absolute;
+    z-index: 0; }
+    .pageTop__background img {
+      width: 100%;
+      height: auto;
+      margin-left: -2rem; }
+  .pageTop__foreground {
+    width: 40%;
+    height: 25rem;
+    margin: 15vh 30%;
+    position: absolute;
+    z-index: 0; }
+
+.section {
+  width: 100%;
+  position: relative;
+  float: left;
+  clear: both; }
+  .section__1, .section__2, .section__3 {
+    background-color: #FFF; }
+  .section__1, .section__3 {
+    width: 20%;
+    position: absolute; }
+    .section__1, .section__1--float, .section__3, .section__3--float {
+      min-height: 20rem;
+      height: auto;
+      float: left;
+      padding: 0; }
+    .section__1--float, .section__3--float {
+      position: fixed;
+      margin-top: -40rem; }
+    @media (max-width: 37.5em) {
+      .section__1, .section__3 {
+        display: none; } }
+  .section__2 {
+    width: 60%;
+    margin: 0 20%;
+    padding: 0 5%;
+    background-color: #FFF;
+    min-height: 60rem;
+    position: relative;
+    float: left; }
+    @media (max-width: 37.5em) {
+      .section__2 {
+        width: 90%;
+        margin: -2.5rem 5% 0 5%; } }
+  .section__3 {
+    margin-left: 75%; }
+
+.navigation {
+  width: 100%;
+  float: left;
+  height: 5rem;
+  overflow: hidden;
+  margin-bottom: 2rem; }
+  .navigation__home {
+    float: left; }
+  .navigation__category {
+    min-width: 10%;
+    float: left;
+    padding: 1.5rem 2rem;
+    color: #171717;
+    cursor: pointer; }
+  .navigation__program {
+    min-width: 10%;
+    float: left;
+    padding: 1.5rem 2rem;
+    color: #00a84f;
+    cursor: pointer; }
+  .navigation__stat {
+    float: right;
+    height: 4rem;
+    padding: 1rem 0; }
+    .navigation__stat__view, .navigation__stat__likes, .navigation__stat__com {
+      height: 3rem;
+      float: left; }
+    .navigation__stat__icon {
+      width: 3rem;
+      height: 3rem;
+      padding: .5rem 0;
+      overflow: hidden;
+      float: left; }
+    .navigation__stat__value {
+      float: right;
+      padding: 0 1rem;
+      line-height: 3rem;
+      color: black; }
+  .navigation__buttons {
+    float: right;
+    padding: 1rem 0; }
+    .navigation__buttons__button {
+      width: 10rem;
+      height: 3rem;
+      float: right; }
+
+.product {
+  width: 100%;
+  overflow: hidden;
+  float: left;
+  margin-bottom: 5rem; }
+  .product__image {
+    width: 100%;
+    height: 30rem;
+    float: left; }
+  .product__content {
+    width: 100%;
+    float: left; }
+  .product__primary {
+    float: left;
+    margin-bottom: 2rem;
+    width: 100%; }
+  .product__title {
+    width: 100%;
+    padding: 1.2rem 0;
+    float: left;
+    color: #c5a516; }
+  .product__author {
+    line-height: 4rem;
+    float: left; }
+  .product__time {
+    line-height: 4rem;
+    margin-left: 2rem;
+    float: left;
+    color: #c5a516; }
+  .product__text {
+    margin-bottom: 5rem;
+    float: left;
+    min-height: 10rem;
+    width: 100%; }
+    .product__text__title {
+      padding: 1.2rem 3rem;
+      margin-bottom: 3rem;
+      float: left;
+      color: #171717;
+      width: 100%;
+      border-left: solid 0.5rem #c5a516; }
+  .product__commentSection {
+    width: 100%;
+    float: left; }
+  .product__tags {
+    width: 100%;
+    float: left;
+    padding: 2rem 0; }
+  .product__tag {
+    background-color: #c5a516;
+    float: left;
+    margin-right: 2rem;
+    cursor: pointer;
+    padding: 0 1rem;
+    line-height: 4rem;
+    color: #FFF; }
+
+.vP {
+  margin-top: 10vh;
+  float: left;
+  width: 80%;
+  margin: 10vh 10% 0 10%; }
+  @media (max-width: 75em) {
+    .vP {
+      width: 100%;
+      margin: 10vh 0 0 0; } }
+
+.accountView {
+  margin-top: 10vh;
+  width: 80%;
+  margin-left: 10%;
+  float: left;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 80vh; }
+  @media (max-width: 56.25em) {
+    .accountView {
+      grid-template-columns: 100%; } }
+
+.loginForm {
+  grid-column: span 1;
+  height: 100%; }
+  .loginForm h1 {
+    color: #c5a516;
+    margin-bottom: 3rem;
+    float: left; }
+  .loginForm h2 {
+    color: black;
+    margin-bottom: 1rem;
+    float: left; }
+  .loginForm__form {
+    float: left;
+    width: 60%;
+    margin: 5rem 20% 0 20%;
+    position: relative; }
+  .loginForm__errorComment {
+    width: 70%;
+    float: left; }
+  .loginForm__username, .loginForm__code, .loginForm__pass {
+    margin: 2.5rem 0;
+    width: 70%;
+    height: 3.5rem;
+    float: left; }
+    .loginForm__username input, .loginForm__code input, .loginForm__pass input {
+      width: 100%;
+      height: 100%; }
+  .loginForm__btn {
+    width: 70%;
+    margin: 2rem 0;
+    float: left; }
+
+.regView {
+  grid-column: span 1;
+  height: 100%;
+  background-color: #c5a516; }
+  .regView__view {
+    overflow-x: hidden; }
+  .regView .viewh--active {
+    background-color: transparent; }
+
+.reg__form {
+  position: relative;
+  width: 60%;
+  margin: 5rem 20% 10rem 20%;
+  float: left; }
+  .reg__form h1,
+  .reg__form h2 {
+    color: #FFF;
+    margin-bottom: 2rem;
+    float: left; }
+  .reg__form .btn_1--normal {
+    color: black !important;
+    border: solid 0.1rem black; }
+
+.reg__text, .reg__date, .reg__dd, .reg__placement {
+  float: left;
+  width: 100%;
+  margin-bottom: 3rem; }
+  .reg__text .text_input_4--success input, .reg__date .text_input_4--success input, .reg__dd .text_input_4--success input, .reg__placement .text_input_4--success input {
+    color: black !important; }
+
+.reg__password .pass {
+  float: left;
+  margin-bottom: 3rem;
+  width: 100%; }
+
+.reg__dd {
+  height: 5rem; }
+
+.reg__placement {
+  padding-left: 1rem; }
+  .reg__placement__comment {
+    color: #CCC;
+    float: left;
+    margin: .5rem 0; }
+  .reg__placement__label {
+    color: black;
+    margin-bottom: 1rem; }
+  .reg__placement .tagInput .iconBtn--normal .icon {
+    fill: black; }
+  .reg__placement .tag {
+    background-color: #FFF; }
+    .reg__placement .tagS {
+      background-color: #FFF;
+      color: black; }
+      .reg__placement .tagS:hover {
+        background: #00a84f;
+        box-shadow: 0 0.1rem 2rem -0.5rem #000; }
+    .reg__placement .tag__name {
+      color: black; }
+    .reg__placement .tag__cancel {
+      border: solid 0.1rem #FFF; }
+      .reg__placement .tag__cancel .btn_icon--white .icon {
+        fill: #c5a516; }
+      .reg__placement .tag__cancel .btn_icon--white:hover {
+        border: solid 0.1rem #b33030; }
+        .reg__placement .tag__cancel .btn_icon--white:hover .icon {
+          fill: #b33030; }
+
+.reg__save {
+  width: 15rem;
+  float: left;
+  height: 5rem;
+  margin-right: 2rem; }
+
+.reg__completed {
+  margin: 5rem 20%;
+  float: left;
+  width: 60%; }
+  .reg__completed h1,
+  .reg__completed h2 {
+    color: #FFF;
+    margin-bottom: 2rem;
+    float: left; }
+  .reg__completed .btn_1--normal {
+    color: black !important;
+    border: solid 0.1rem black; }
+  .reg__completed__buttons {
+    float: left;
+    padding: 1rem 0; }
+  .reg__completed__button {
+    width: 10rem;
+    height: 3rem;
+    float: left;
+    margin-right: 2rem; }
+

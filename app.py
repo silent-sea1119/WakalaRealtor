@@ -83,6 +83,11 @@ def getArticle(param):
     return jsonify(mc.getArticle(param))
 
 
+@app.route('/getArticles/<string:param>')
+def getArticles(param):
+    return jsonify(mc.getPosts(param))
+
+
 @app.route('/articleReaction/<string:param>/<string:param2>')
 def articleReaction(param,param2):
     return jsonify(mc.articleReaction(param,param2))
