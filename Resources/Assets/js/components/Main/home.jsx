@@ -1,10 +1,11 @@
-import humanize from '@nlib/human-readable';
 import axios from 'axios';
 import React, { Component } from 'react';
 import Slider from "react-slick";
 import webUrl from '../../abstract/variables';
 import Button from '../UI/button';
 import ErrorPopup from '../UI/errorPopup';
+import {Article1} from "./article/article";
+import ButtonWithIcon from '../UI/buttonWithIcon';
 
 
 class Home extends Component {
@@ -26,8 +27,9 @@ class Home extends Component {
     }
 
     render() {
+        var view = this.state.view;
         var viewClass = "view__options";
-        viewClass += "--" + this.state.view;
+        viewClass += "--" + view;
 
         return (
 
@@ -51,15 +53,15 @@ class Home extends Component {
                     </div>
                 </div>
 
-                <div className={this.state.view == 1 ? "view--active" : "view--disabled"}>
+                <div className={view == 1 ? "view--active" : "view--disabled"}>
                     <LandingView />
                 </div>
 
-                <div className={this.state.view == 2 ? "view--active" : "view--disabled"}>
+                <div className={view == 2 ? "view--active" : "view--disabled"}>
                     <ArticlesView parent={this}/>
                 </div>
 
-                <div className={this.state.view == 3 ? "view--active" : "view--disabled"}>
+                <div className={view == 3 ? "view--active" : "view--disabled"}>
                     <InfoView />
                 </div>
             </div>
@@ -80,25 +82,27 @@ class LandingView extends Component {
             prevArrow: <PrevArrow /> */
         };
 
+        const image = {
+            background: 'url("' + webUrl + 'assets/images/back--1.jpg")',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover'
+        }
+
+
         return (
             <Slider {...settings}>
                 <div>
-                    <div className="lview--1 lview">
+                    <div className="lview--1 lview" style={image}>
                         <div className="lview__content">
                             <div className="lview__title f_title ">Cultivating the Future</div>
                             <div className="lview__body f_h1">
                                 Welcome to the Edulink platform, providing a network for students, teachers and educational institutions such as universities, professional schools and high schools, to share resources, ideas and information concerning the field of learning.
                             </div>
+
                             <div className="lview__buttons">
                                 <div className="lview__button">
                                     <a href={webUrl + 'login'}>
-                                        <div className="btn_1--edulink f_button_2 t-10 f_text-capitalize"></div>
-                                    </a>
-                                </div>
-
-                                <div className="lview__button">
-                                    <a href={webUrl + 'sign_up'}>
-                                        <div className="btn_1--edulink f_button_2 t-55 f_text-capitalize"></div>
+                                        <div className="btn_1--normal f_button_2"></div>
                                     </a>
                                 </div>
                             </div>
@@ -107,109 +111,6 @@ class LandingView extends Component {
                     </div>
                 </div>
 
-                <div>
-                    <div className="lview--2 lview">
-                        <div className="lview__content">
-
-                            <div className="lview__title f_title ">A student can </div>
-                            <div className="lview__body f_h1">
-                                <ul>
-                                    <li>Communicate and share resources with teachers and students.</li>
-                                    <li>Keep up with the latest info from institutions, students and teachers</li>
-                                    <li>Manage their student info</li>
-                                    <li>View their grades</li>
-                                    <li>View and manage their school schedule</li>
-                                    <li>Perform reviews and ratings</li>
-                                    <li>And much more ...</li>
-                                </ul>
-
-
-                            </div>
-
-                        </div>
-
-
-                        <div className="lview__buttons">
-                            <div className="lview__button">
-                                <a href={webUrl + 'login'}>
-                                    <div className="btn_1--edulink f_button_2 t-10 f_text-capitalize"></div>
-                                </a>
-                            </div>
-
-                            <div className="lview__button">
-                                <a href={webUrl + 'sign_up'}>
-                                    <div className="btn_1--edulink f_button_2 t-55 f_text-capitalize"></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div className="lview--3 lview">
-                        <div className="lview__content">
-
-                            <div className="lview__title f_title ">A teacher can </div>
-                            <div className="lview__body f_h1">
-                                <ul>
-                                    <li>Manage their profile</li>
-                                    <li>Communicate and share resources with teachers and students all over the world</li>
-                                    <li>Keep up with the latest news from institutions, students and teachers</li>
-                                    <li>Update and maintain student grades</li>
-                                    <li>Execute attendance check</li>
-                                    <li>And much more ...</li>
-                                </ul>
-
-                            </div>
-                        </div>
-
-                        <div className="lview__buttons">
-                            <div className="lview__button">
-                                <a href={webUrl + 'login'}>
-                                    <div className="btn_1--edulink f_button_2 t-10 f_text-capitalize"></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div>
-                    <div className="lview--4 lview">
-                        <div className="lview__content">
-
-                            <div className="lview__title f_title ">An institution can </div>
-                            <div className="lview__body f_h1">
-
-                                <li>Manage a personalized subdomain</li>
-                                <li>Manage students and Teaching staff</li>
-                                <li>Easily and seemlessly schedule class timetables</li>
-                                <li>Post news feeds</li>
-                                <li>Monitor attendance</li>
-                                <li>Manage online student applications</li>
-                                
-                            </div>
-                        </div>
-
-                        <div className="lview__buttons">
-                            <div className="lview__button">
-                                <a href={webUrl + 'insAdmin/login'}>
-                                    <div className="btn_1--edulink f_button_2 t-10 f_text-capitalize"></div>
-                                </a>
-                            </div>
-
-                            <div className="lview__button">
-                                <a href={webUrl + 'insAdmin/registration'}>
-                                    <div className="btn_1--edulink f_button_2 t-55 f_text-capitalize"></div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
 
             </Slider>
         );
@@ -217,6 +118,42 @@ class LandingView extends Component {
 }
 
 class ArticlesView extends Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            view:1,
+            MainView:{},
+            FilteredView:{}
+        };
+
+        this.setView = this.setView.bind(this);
+    }
+
+
+    setView(option) {
+        var state = this.state;
+        state.view = option;
+        this.setState(state);
+    }
+
+    render() {
+        var view = this.state.view;
+
+        return (
+            <div>
+                <div className={view == 1 ? "viewh--active" : "viewh--disabled"}>
+                    <ArticlesMainView parent={this}/>
+                </div>
+
+                <div className={view == 2 ? "viewh--active" : "viewh--disabled"}>
+                    <ArticlesFilteredView parent={this} />
+                </div>
+            </div>
+        );
+    }
+}
+class ArticlesMainView extends Component {
     constructor(props) {
         super(props);
 
@@ -243,6 +180,10 @@ class ArticlesView extends Component {
     }
 
     componentDidMount() {
+        var state = this.props.parent.state;
+        state.MainView = this;
+        this.props.parent.setState(state);
+
         this.getArticles();
     }
 
@@ -310,18 +251,188 @@ class ArticlesView extends Component {
     }
 
     render() {
-        var c = this;
+        var parent = this.props.parent;
+
         return (
-            <div id="content">
-                <div className="content__view">
+            <div className="articlesView">
+                <div className="articlesView__topBar">
+                    <div className="articlesView__topBar__title f_h1">Top Articles</div>
+                </div>
+
+                <div className="articlesView__content">
                     {
                         this.state.content.map((item, i) => {
-                            return (<div className="pro" key={i}><Article post={item} parent={this} /></div>);
+                            return (<div className="art" key={i}><Article1 post={item} parent={this} /></div>);
                         })
                     }
                 </div>
 
-                <div className="loadBtn">
+                <div className="articlesView__load">
+                    <Button
+                        parent={this}
+                        status={0}
+                        config={{
+                            type: "btn_1",
+                            label: "More",
+                            text: "",
+                            action: () => {
+                                parent.state.FilteredView.state.filterOption = 1;
+                                parent.state.FilteredView.getArticles();
+                                parent.setView(2);
+                            }
+                        }} />
+                </div>
+            </div>
+        );
+    }
+}
+
+class ArticlesFilteredView extends Component {
+    constructor(props) {
+        super(props);
+
+        var Viewable = {
+            product: true,
+            event: true,
+            notice: true
+        };
+
+        this.state = {
+            viewable: Viewable,
+            content: [],
+            offset: 0,
+            buttons: [],
+            filterOption:0,
+            filter:{
+                tag:0
+            },
+            ajax: {
+                getArticles: {
+                    attempts: 0
+                }
+            }
+        }
+
+        this.getArticles = this.getArticles.bind(this);
+        this.reloadAjaxRequest = this.reloadAjaxRequest.bind(this);
+    }
+
+    componentDidMount() {
+        var state = this.props.parent.state;
+        state.FilteredView = this;
+        this.props.parent.setState(state);
+    }
+
+    reloadAjaxRequest(option) {
+        var state = this.state;
+
+        switch (option) {
+            case 1: {
+
+                if (state.ajax.getArticles.attempts < 10) {
+                    state.ajax.getArticles.attempts += 1;
+                    this.setState(state);
+                    this.getArticles();
+                }
+                else {
+                    this.props.parent.state.errorPopup.displayError("Access to server failed. Try again Later! ");
+                    state.ajax.getArticles.attempts = 0;
+                    this.setState(state);
+                }
+                break;
+            }
+        }
+
+    }
+
+
+    getArticles(reset = false) {
+        var c = this;
+        var state = c.state;
+        var url = webUrl ;
+
+        switch(state.filterOption){
+            case 0:{
+                url += "getArticles/" + state.offset
+                break;
+            }
+            case 1: {
+                url += "getArticlesByTag/" + state.tag + "/" + state.offset
+                break;
+            }
+            default:{
+                return;
+            }
+        }
+
+        var errorPopup = this.props.parent.state.errorPopup;
+
+        if (reset) {
+            state.offset = 0;
+            state.content = [];
+        }
+
+        axios({
+            url: url,
+            method: "GET"
+        }).catch((response) => {
+            if (response.status != 200) {
+                setTimeout(() => {
+                    c.reloadAjaxRequest(1);
+                }, 1000)
+            }
+
+        }).then((response) => {
+            var data = response.data;
+
+            switch (data.error) {
+                case 0: {
+
+                    if (data.content.length == 0) {
+                        errorPopup.displayError("There are no more Articles to retrieve. Continue creating more.");
+                        break;
+                    }
+
+                    state.content = state.content.concat(data.content);
+                    state.offset += data.content.length;
+                    c.setState(state);
+                    break;
+                }
+            }
+        })
+
+    }
+
+    render() {
+        var c = this;
+        return (
+            <div className="articlesView">
+                <div className="articlesView__topBar">
+                    <div className="articlesView__topBar__back">
+                        <ButtonWithIcon
+                            parent={this}
+                            status={0}
+                            config={{
+                                class: "btnIcon_1",
+                                label: "Back",
+                                icon:"return",
+                                text: "",
+                                action: () => {
+                                    c.props.parent.setView(1);
+                                }
+                            }} />
+                    </div>
+                </div>
+
+                <div className="articlesView__content">
+                    {
+                        this.state.content.map((item, i) => {
+                            return (<div className="art" key={i}><Article1 post={item} parent={this} /></div>);
+                        })
+                    }
+                </div>
+
+                <div className="articlesView__load">
                     <Button
                         parent={this}
                         status={0}
@@ -333,74 +444,6 @@ class ArticlesView extends Component {
                                 c.getArticles()
                             }
                         }} />
-                </div>
-            </div>
-        );
-    }
-}
-
-class Article extends Component {
-    render() {
-        var post = this.props.post;
-        var parent = this.props.parent.props.parent;
-
-        const image = {
-            background: 'url("' + webUrl + "repo/" + post.post.image.name + '/thumb_150_150.jpg")',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover'
-        }
-
-        return (
-            <div className="pro--1__con" id={"p-" + post.log.id}>
-                <div className="pro--1__con__up" style={image}>
-                    <a href={webUrl + "article/" + post.post.id}>
-                        <div className="pro--1__link">
-                            <div className="pro--1__title f_normal f_text-capitalize">{post.post.title}</div>
-                            <svg className="icon">
-                                <use xlinkHref="#view" />
-                            </svg>
-                        </div>
-                    </a> 
-                </div>
-
-                <div className="pro--1__con__down">
-
-                    <div className="pro--1__stat">
-                        <div className="pro--1__stat__view">
-                            <div className="pro--1__stat__icon">
-                                <div className="iconBtn--normal">
-                                    <svg className="icon">
-                                        <use xlinkHref="#view" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div className="pro--1__stat__value f_h2 f_text-bold">{humanize(post.post.stat.views)}</div>
-                        </div>
-
-                        <div className="pro--1__stat__likes">
-                            <div className="pro--1__stat__icon">
-                                <div className="iconBtn--normal">
-                                    <svg className="icon">
-                                        <use xlinkHref="#like" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div className="pro--1__stat__value f_h2 f_text-bold">{humanize(post.post.stat.reactions)}</div>
-                        </div>
-
-                        <div className="pro--1__stat__com">
-                            <div className="pro--1__stat__icon">
-                                <div className="iconBtn--normal">
-                                    <svg className="icon">
-                                        <use xlinkHref="#communication" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div className="pro--1__stat__value f_h2 f_text-bold">{humanize(post.post.stat.comments)}</div>
-                        </div>
-
-
-                    </div>
                 </div>
             </div>
         );

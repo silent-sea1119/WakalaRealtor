@@ -275,10 +275,11 @@ class CommentInput extends Component {
                                 parent={this}
                                 status={0}
                                 config={{
-                                    label: "",
+                                    label: "Name",
                                     length:60,
-                                    type: "text_input_4",
-                                    placeholder:"Name ...",
+                                    floatingLabel:true,
+                                    type: "text_input",
+                                    placeholder:"John Doe",
                                     comment: "Maximum characters allowed is (60)."
                                 }} />
                         </div>
@@ -288,9 +289,10 @@ class CommentInput extends Component {
                                 parent={this}
                                 status={0}
                                 config={{
-                                    label: "",
-                                    type: "text_input_4",
-                                    placeholder: "Email Address ...",
+                                    label: "Email Address",
+                                    type: "text_input",
+                                    floatingLabel: true,
+                                    placeholder: "johndoe@email.com",
                                     comment: "Maximum characters allowed is (80)."
                                 }} />
                         </div>

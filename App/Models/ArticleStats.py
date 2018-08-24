@@ -46,6 +46,10 @@ class ArticleStatsModel(db.Model):
     def find_by_id(cls,_id):
         return cls.query.get(_id)
 
+    @classmethod
+    def find_by_article(cls,pid):
+        return cls.query.filter_by(articleId=pid)
+
 
     @classmethod
     def check_if_user_has_seen(cls,user,articleId):

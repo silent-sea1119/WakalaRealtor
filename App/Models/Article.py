@@ -55,35 +55,40 @@ class ArticleModel(db.Model):
     def find_by_id(cls,_id):
         return cls.query.get(_id)
 
+    @classmethod
+    def get_top_articles(cls,number):
+        return cls.query.order_by(cls.views).limit(number).all()
+
 
     def get_tags(self):
         return [x.get_tag_name() for x in self.tags]
 
-
     def get_stats(self):
-        self.stats = ArticleStatModel.find_by_article(self.id)
+        self.stats = ArticleStatsModel.find_by_article(self.id)
 
 
     def set_visitor(self, userid):
+        user = UserModel.find_by_user(userid)
+
+        if not user:
+            user = UserModel(userid)
+            user.save()
+
+        else:
+            stat = ArticleStatsModel.find(self.id, user.id)
+
+            if stat:
+                return False            # Visitor to post has already been registered
+
+        stat = ArticleStatsModel(self.id, user.id)
+
+        stat.save()
+        self.views += 1
+        self.save()
+
+
         try:
-            user = UserModel.find_by_user(userid)
-
-            if not user:
-                user = UserModel(userid)
-                user.save()
-
-            else:
-                stat = ArticleStatModel.find(self.id, user.id)
-
-                if stat:
-                    return False            # Visitor to post has already been registered
-                
-            stat = ArticleStatModel(self.id, user.id)
-
-            stat.save()
-            self.views += 1
-            self.save()
-
+           
             return True
         except:
             return False
@@ -97,13 +102,13 @@ class ArticleModel(db.Model):
             if not user:
                 user = UserModel(userid)
                 user.save()
-                stat = ArticleStatModel(self.id, user.id)
+                stat = ArticleStatsModel(self.id, user.id)
 
             else:
-                stat = ArticleStatModel.find(self.id, user.id)
+                stat = ArticleStatsModel.find(self.id, user.id)
 
                 if not stat:
-                    stat = ArticleStatModel(self.id, user.id)
+                    stat = ArticleStatsModel(self.id, user.id)
 
             stat.reaction = reaction
             stat.save()

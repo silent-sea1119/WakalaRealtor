@@ -6,6 +6,7 @@ import moment from "moment";
 import axios from "axios";
 import StickyBox from 'react-sticky-content';
 import ButtonWithIcon from '../UI/buttonWithIcon';
+import {Article2} from './article/article';
 
 class Article extends Component {
     constructor(props){
@@ -362,7 +363,9 @@ class Article extends Component {
                     
 
                     <StickyBox >
-                        <div className="section__3"></div>
+                        <div className="section__3">
+                            <TopArticlesView parent={this}/>
+                        </div>
                     </StickyBox>
                     
                 </div>  
@@ -371,5 +374,97 @@ class Article extends Component {
     }
 }
 
+class TopArticlesView extends Component {
+    constructor(props) {
+        super(props);
+
+        var Viewable = {
+            product: true,
+            event: true,
+            notice: true
+        };
+
+        this.state = {
+            viewable: Viewable,
+            content: [],
+            offset: 0,
+            buttons: [],
+            ajax:{
+                getArticles:{
+                    attempts:0
+                }
+            }
+        }
+
+        this.getArticles = this.getArticles.bind(this);
+        this.reloadAjaxRequest = this.reloadAjaxRequest.bind(this);
+    }
+
+    componentDidMount() {
+        this.getArticles();
+    }
+
+    reloadAjaxRequest(option) {
+        var state = this.state;
+
+        switch (option) {
+            case 1: {
+
+                if (state.ajax.getArticles.attempts < 10) {
+                    state.ajax.getArticles.attempts += 1;
+                    this.setState(state);
+                    this.getArticles();
+                }
+                else {
+                    this.props.parent.state.errorPopup.displayError("Access to server failed. Try again Later! ");
+                    state.ajax.getArticles.attempts = 0;
+                    this.setState(state);
+                }
+                break;
+            }
+        }
+
+    }
+
+
+    getArticles() {
+        var c = this;
+        var state = c.state;
+        axios({
+            url: webUrl + "getTopArticles/10",
+            method: "GET"
+        }).catch((response) => {
+            if(response.status != 200){
+                setTimeout(() => {
+                    c.reloadAjaxRequest(1);
+                }, 1000)
+            }
+
+        }).then((response) => {
+            var data = response.data;
+
+            switch (data.error) {
+                case 0: {
+                    state.content = data.content;
+                    c.setState(state);
+                    break;
+                }
+            }
+        })
+
+    }
+
+    render() {
+        return (
+            <div className="content__view">
+                {
+                    this.state.content.map((item, i) => {
+                        return (<Article2 key={i} post={item} parent={this} />);
+                    })
+                }
+            </div>
+        );
+    }
+}
 
 export default Article;

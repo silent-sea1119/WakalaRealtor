@@ -56,8 +56,8 @@
         }
     }
     &__2 {
-        width: 60%;
-        margin: -2.5rem 20% 0 20%;
+        width: 50%;
+        margin: -2.5rem 25% 0 25%;
         padding: 0 5%;
         background-color: $color-primary-white;
         min-height: 60rem;
@@ -189,7 +189,6 @@
         float: left;
         padding: 2rem 0;
     }
-
     &__tag {
         background-color: $color-edulink-primary;
         float: left;
@@ -199,5 +198,9 @@
         line-height: 4rem;
         color: $color-primary-white;
     }
+}
 
+.content__view {
+    margin: 3rem 0;
+    float: left;
 }

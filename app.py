@@ -16,6 +16,7 @@ from flask_jwt_extended import (JWTManager, create_access_token,
                                 jwt_required, set_access_cookies)
 from flask_restful import Api
 from flask_webpack import Webpack
+from cheroot.wsgi import Server as WSGIServer
 
 #   __version__ = pkg_resources.require("AngelaBlog")[0].version
 here = path.abspath(path.dirname('./'))
@@ -86,6 +87,11 @@ def getArticle(param):
 @app.route('/getArticles/<string:param>')
 def getArticles(param):
     return jsonify(mc.getPosts(param))
+
+
+@app.route('/getTopArticles/<string:param>')
+def getTopArticles(param):
+    return jsonify(mc.getTopArticles(param))
 
 
 @app.route('/articleReaction/<string:param>/<string:param2>')
@@ -175,6 +181,14 @@ def setup():
     db.create_all()
     return jsonify({'error':0})
 
+""" 
+server = WSGIServer(bind_addr=("127.0.0.1", app.config["PORT"]), wsgi_app=app, numthreads=100)
+
+try:
+    server.start()
+except KeyboardInterrupt:
+    server.stop() 
+ """
 
 if __name__ == "__main__":
-    app.run(extra_files=[app.config["WEBPACK_MANIFEST_PATH"]], port=5000)
+    app.run(extra_files=app.config["WEBPACK_MANIFEST_PATH"],port=5000)

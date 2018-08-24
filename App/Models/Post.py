@@ -27,8 +27,12 @@ class PostModel(db.Model):
 
     @classmethod
     def find_by_id(cls,_id):
-        return cls.query.filter_by(id=_id).first()
+        return cls.query.get(_id)
 
+
+    @classmethod
+    def find_by_posts(cls,posts):
+        return cls.query.filter(cls.postId.in_(posts))
 
     @classmethod
     def exists(cls,name):

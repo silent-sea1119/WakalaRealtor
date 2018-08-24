@@ -24,7 +24,7 @@ class MainController:
             x['post'] = post.json()
             x['post']['tags'] = post.get_tags()
 
-            p.post.set_visitor(request.remote_addr)
+            post.set_visitor(request.remote_addr)
             
             return {"error":0,"content":x}
         else :
@@ -55,6 +55,47 @@ class MainController:
             x['post']['body'] = ""
 
             ts = post.tags
+            xtags = []
+
+            for t in ts:
+                for y in tagsFound:
+                    if t.tagId == y.id:
+                        xtags.append(y.json())
+
+            x['tags'] = xtags
+
+            content.append(x)
+
+        return {"error": 0, "content": content}
+
+    @staticmethod
+    def getTopArticles(number):
+        articles = ArticleModel.get_top_articles(number)
+        tags = []
+
+        for a in articles:
+            ts = a.tags
+
+            for t in ts:
+                if t.tagId not in tags:
+                    tags.append(t.tagId) 
+
+        tagsFound = TagModel.get_all_tags(tags)
+        postLogs = PostModel.find_by_posts([x.id for x in articles])
+        content = []
+
+        for a in articles:
+            x = {}
+
+            for pl in postLogs:
+                if pl.postId == a.id:
+                    x['log'] = pl.json()
+                    break
+
+            x['post'] = a.json()
+            x['post']['body'] = ""
+
+            ts = a.tags
             xtags = []
 
             for t in ts:

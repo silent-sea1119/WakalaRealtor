@@ -54,19 +54,7 @@ var entries = {
     ],
     admin_posts_js: [
         jsRoot + "pages/admin/posts.jsx"
-    ],
-    admin_addArticle_css: [
-        scssRoot + "pages/admin/addArticle.scss"
-    ],
-    admin_addArticle_js: [
-        jsRoot + "pages/admin/addArticle.jsx"
-    ],
-    admin_editArticle_css: [
-        scssRoot + "pages/admin/editArticle.scss"
-    ],
-    admin_editArticle_js: [
-        jsRoot + "pages/admin/editArticle.jsx"
-    ],
+    ]
 }
 
 const config = {
