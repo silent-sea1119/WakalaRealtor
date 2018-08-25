@@ -1,0 +1,9 @@
+setup.py
+App/__init__.py
+Database/__init__.py
+Resources/__init__.py
+wakalarealtor.egg-info/PKG-INFO
+wakalarealtor.egg-info/SOURCES.txt
+wakalarealtor.egg-info/dependency_links.txt
+wakalarealtor.egg-info/requires.txt
+wakalarealtor.egg-info/top_level.txt

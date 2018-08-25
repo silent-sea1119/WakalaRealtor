@@ -1,5 +1,5 @@
 {
     "git.ignoreLimitWarning": true,
-    "python.pythonPath": "${workspaceFolder}\\AngelaBlog\\Scripts\\python.exe",
+    "python.pythonPath": "${workspaceFolder}/WakalaRealtor/bin/python",
     "python.jediEnabled": false
 }

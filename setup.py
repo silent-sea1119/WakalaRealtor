@@ -5,9 +5,9 @@ __version__ = "0.0.1"
 
 
 setup(
-    name="angelablog",
+    name="wakalarealtor",
     version=__version__,
-    description="A blog for Angela",
+    description="A blog for WakalaRealtor",
     author="Brian K. Bett",
     author_email="bettblake08@hotmail.com",
     packages=find_packages(),

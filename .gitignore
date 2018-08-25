@@ -1,8 +1,11 @@
-./node_modules/
-./dist/
-./AngelaBlog/
+node_modules/
+dist/
+WakalaRealtor/
+WakalaRealtor.egg-info/
 config.py
-./Public/Assets
-!./Public/Assets/images
-!./Public/Assets/ckeditor
+build/
+__pycache__/
+Public/Assets
+!Public/Assets/images
+!Public/Assets/ckeditor
 app.py
