@@ -1,6 +1,6 @@
 node_modules/
 dist/
-WakalaRealtor/
+env/
 WakalaRealtor.egg-info/
 config.py
 build/
@@ -8,4 +8,3 @@ __pycache__/
 Public/Assets
 !Public/Assets/images
 !Public/Assets/ckeditor
-app.py

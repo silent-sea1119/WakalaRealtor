@@ -1,5 +1,5 @@
 from db import db
-from App.Models.RepoFile import RepoFileModel
+from Database.Models.RepoFile import RepoFileModel
 
 class RepoFolderModel(db.Model):
     __tablename__ = "repo_folder"

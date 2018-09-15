@@ -1,8 +1,8 @@
 from flask_restful import Resource, reqparse
-from App.Models.Post import PostModel
-from App.Models.ArticleComment import ArticleCommentModel
-from App.Models.User import UserModel
-from App.Models.Article import ArticleModel
+from Database.Models.Post import PostModel
+from Database.Models.ArticleComment import ArticleCommentModel
+from Database.Models.User import UserModel
+from Database.Models.Article import ArticleModel
 from flask import request
 
 class Comment(Resource):

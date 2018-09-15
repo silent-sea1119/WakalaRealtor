@@ -1,9 +1,8 @@
 from db import db
-from App.Models.ArticleTag import ArticleTagModel
-from App.Models.RepoFile import RepoFileModel
-from App.Models.User import UserModel
-
-from App.Models.ArticleStats import ArticleStatsModel
+from Database.Models.ArticleTag import ArticleTagModel
+from Database.Models.RepoFile import RepoFileModel
+from Database.Models.User import UserModel
+from Database.Models.ArticleStats import ArticleStatsModel
 
 class ArticleModel(db.Model):
     __tablename__ = "articles"

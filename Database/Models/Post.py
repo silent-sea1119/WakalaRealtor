@@ -1,6 +1,6 @@
 import datetime
 from db import db
-from App.Models.Article import ArticleModel
+from Database.Models.Article import ArticleModel
 
 class PostModel(db.Model):
     __tablename__ = "posts"

@@ -1,6 +1,6 @@
 import datetime
 from db import db
-from App.Models.User import UserModel
+from Database.Models.User import UserModel
 
 class ArticleCommentStatModel(db.Model):
     __tablename__ = "article_comment_stats"

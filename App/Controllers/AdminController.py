@@ -1,12 +1,12 @@
 from flask import render_template,jsonify
 from flask_restful import reqparse
 from flask_jwt_extended import jwt_required,create_access_token,create_refresh_token, get_raw_jwt, set_access_cookies,set_refresh_cookies,unset_jwt_cookies
-from App.Models.RevokedToken import RevokedTokenModel
-from App.Models.AdminUser import AdminUserModel
-from App.Models.RepoFolder import RepoFolderModel
-from App.Models.Article import ArticleModel
-from App.Models.Post import PostModel
-from App.Models.Tag import TagModel
+from Database.Models.RevokedToken import RevokedTokenModel
+from Database.Models.AdminUser import AdminUserModel
+from Database.Models.RepoFolder import RepoFolderModel
+from Database.Models.Article import ArticleModel
+from Database.Models.Post import PostModel
+from Database.Models.Tag import TagModel
 
 class AdminController:
     def adminLoginPage(self):

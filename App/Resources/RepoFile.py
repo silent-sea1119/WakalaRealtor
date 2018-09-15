@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required
-from App.Models.RepoFile import RepoFileModel
+from Database.Models.RepoFile import RepoFileModel
 
 class RepoFile(Resource):
     def get(self, id):

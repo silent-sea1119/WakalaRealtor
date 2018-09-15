@@ -1,5 +1,5 @@
 from flask_restful import Resource,reqparse
-from App.Models.AdminUser import AdminUserModel
+from Database.Models.AdminUser import AdminUserModel
 from werkzeug.security import generate_password_hash
 
 class AdminUser(Resource):

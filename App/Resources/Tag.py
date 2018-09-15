@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required
-from App.Models.Tag import TagModel
+from Database.Models.Tag import TagModel
 
 class Tag(Resource):
     def get(self,param):

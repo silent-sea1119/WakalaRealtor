@@ -1,8 +1,8 @@
 import datetime
 from db import db
-from App.Models.ArticleCommentStats import ArticleCommentStatModel
+from Database.Models.ArticleCommentStats import ArticleCommentStatModel
 from flask import jsonify
-from App.Models.User import UserModel
+from Database.Models.User import UserModel
 
 class ArticleCommentModel(db.Model):
     __tablename__ = "article_comments"
