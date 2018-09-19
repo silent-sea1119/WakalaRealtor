@@ -3,9 +3,11 @@ dist/
 WakalaRealtor/
 WakalaRealtor.egg-info/
 config.py
+private.py
 build/
+Log/
 __pycache__/
 Public/Assets
 !Public/Assets/images
 !Public/Assets/ckeditor
-app.py
+*.pyc
