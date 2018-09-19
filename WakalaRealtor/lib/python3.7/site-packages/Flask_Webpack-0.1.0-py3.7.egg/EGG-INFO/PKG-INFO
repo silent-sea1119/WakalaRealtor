@@ -1,0 +1,10 @@
+Metadata-Version: 1.0
+Name: Flask-Webpack
+Version: 0.1.0
+Summary: Flask extension for managing assets with Webpack.
+Home-page: https://github.com/nickjj/flask-webpack
+Author: Nick Janetakis
+Author-email: nick.janetakis@gmail.com
+License: GPLv3
+Description: UNKNOWN
+Platform: UNKNOWN

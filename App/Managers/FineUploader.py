@@ -6,7 +6,7 @@ import sys
 import random
 
 from flask import request
-from App.Models.RepoFile import RepoFileModel
+from Database.Models.RepoFile import RepoFileModel
 from App.Managers.ImageManager import ImageManager
 
 

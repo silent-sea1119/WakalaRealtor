@@ -1,5 +1,5 @@
 from flask_restful import Resource, reqparse
-from App.Models.Post import PostModel
+from Database.Models.Post import PostModel
 
 class Post(Resource):
     def delete(self, param):

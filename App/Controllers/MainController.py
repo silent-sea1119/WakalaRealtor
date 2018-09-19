@@ -1,7 +1,7 @@
 from flask import render_template,request
-from App.Models.Post import PostModel
-from App.Models.Article import ArticleModel
-from App.Models.Tag import TagModel
+from Database.Models.Post import PostModel
+from Database.Models.Article import ArticleModel
+from Database.Models.Tag import TagModel
 
 class MainController:
 

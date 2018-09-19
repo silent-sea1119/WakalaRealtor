@@ -1,9 +1,9 @@
 from flask_restful import Resource, reqparse
-from App.Models.Article import ArticleModel
-from App.Models.ArticleTag import ArticleTagModel
-from App.Models.Post import PostModel
-from App.Models.RepoFile import RepoFileModel
-from App.Models.Post import PostModel
+from Database.Models.Article import ArticleModel
+from Database.Models.ArticleTag import ArticleTagModel
+from Database.Models.Post import PostModel
+from Database.Models.RepoFile import RepoFileModel
+from Database.Models.Post import PostModel
 
 from flask import request
 import json

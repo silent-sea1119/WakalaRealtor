@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required
-from App.Models.RepoFolder import RepoFolderModel
+from Database.Models.RepoFolder import RepoFolderModel
 
 class RepoFolder(Resource):
 

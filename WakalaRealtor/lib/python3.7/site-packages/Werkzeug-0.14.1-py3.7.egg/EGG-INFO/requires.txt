@@ -1,0 +1,12 @@
+
+[dev]
+coverage
+pytest
+sphinx
+tox
+
+[termcolor]
+termcolor
+
+[watchdog]
+watchdog

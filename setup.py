@@ -18,6 +18,9 @@ setup(
         "Flask-JWT-Extended>=3.12.1",
         "Flask-RESTful>=0.3.6",
         "Flask-SQLAlchemy>=2.3.2",
-        "Pillow>=5.2.0"
+        "Pillow>=5.2.0",
+        "pytest>=3.7.4",
+        "coveralls",
+        "pytest-cov>=2.6.0"
     ]
 )
